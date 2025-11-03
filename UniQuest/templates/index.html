@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-<title>Travello</title>
+<title>UniQuest</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travello template project">
@@ -16,6 +16,132 @@
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+
+   <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            padding: 30px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+
+            align-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c5530;
+            font-size: 2.5rem;
+        }
+
+        .destinations_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .destination {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .destination:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .destination_image {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .destination_image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .destination_content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .destination_title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c5530;
+        }
+
+        .destination_subtitle {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .destination_price {
+            color: #6ca607;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px dashed #eee;
+        }
+
+        .spazi {
+            background-color: transparent;
+            box-shadow: none;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .destinations_container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .destinations_container {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 15px;
+            }
+        }
+    </style>
+
+
 </head>
 <body>
 
@@ -29,27 +155,27 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo text-danger"><a href="">UniQuest Travels</a></div>
-							<nav class="main_nav">
-								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="">Home</a></li>
-									<li><a href="accounts/about">About Us</a></li>
-									<li><a href="accounts/news">News</a></li>
-									<li><a href="accounts/contact">Contact</a></li>
+							<div class="logo text-danger"><a href="" class="text-danger "><b>UniQuest Travels</b></a></div>
+							<nav class="main_nav text-light">
+								<ul class="d-flex flex-row align-items-start justify-content-start text-light">
+									<li class="active"><a href="" class="text-warning">Home</a></li>
+									<li><a href="accounts/about" class="text-warning">About Us</a></li>
+									<li><a href="accounts/news" class="text-warning">News</a></li>
+									<li><a href="accounts/contact" class="text-warning">Contact Us</a></li>
 
 									{% if user.is_authenticated %}
-										<li><a href="accounts/logout">Logout</a></li>
+										<li><a href="accounts/logout" class="text-danger">Logout</a></li>
 									{% else %}
-										<li><a href="accounts/register">Register</a></li>
-										<li><a href="accounts/login">Login</a></li>
+										<li><a href="accounts/register" class="text-primary">Register</a></li>
+										<li><a href="accounts/login" class="text-primary">Login</a></li>
 									{% endif %}
 								</ul>
 							</nav>
 							{% if user.is_authenticated %}
-								<div class="header_phone ml-auto">Welcome, {{user.first_name}}</div>
+								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
 							{% else %}
 								<div class="header_phone ml-auto">
-									<a style="color: white; font-size:xx-large;" href="https://www.instagram.com/kmranrg/" target="_blank">
+									<a style="color: white; font-size:xx-large;" href="https://www.instagram.com/cptzeph/" target="_blank">
 										<i class="fa fa-instagram" aria-hidden="false"></i>
 									</a>
 								</div>
@@ -68,11 +194,8 @@
 		</div>
 		<div class="header_social d-flex flex-row align-items-center justify-content-start">
 			<ul class="d-flex flex-row align-items-start justify-content-start">
-				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
 				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 			</ul>
 		</div>
@@ -82,7 +205,7 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="">UniQuest Travels</a></div>
+			<div class="menu_logo text-danger"><a href="">UniQuest Travels</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
@@ -127,13 +250,13 @@
 				
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
+					<div class="background_image" style="background-image:url({% static 'images/nrb2.jpg' %})"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content">
-										<div class="home_title"><h2>Let us take you places</h2></div>
+										<div class="home_title"><h2 class="text-warning p-3">Where Adventure Meets Authenticity</h2></div>
 									</div>
 								</div>
 							</div>
@@ -165,7 +288,7 @@
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content">
-										<div class="home_title"><h2>Let us take you places</h2></div>
+										<div class="home_title"><h2>Explore Kenya</h2></div>
 									</div>
 								</div>
 							</div>
@@ -175,66 +298,64 @@
 
 			</div>
 
-			<div class="home_page_nav">
-				<ul class="d-flex flex-column align-items-end justify-content-end">
-					<li><a href="#" data-scroll-to="#destinations">Offers<span>01</span></a></li>
-					<li><a href="#" data-scroll-to="#testimonials">Testimonials<span>02</span></a></li>
-					<li><a href="#" data-scroll-to="#news">Latest<span>03</span></a></li>
-				</ul>
-			</div>
 		</div>
 	</div>
 
 	<!-- Search -->
 
-	<div class="home_search">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
-						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
-								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
-									<button class="home_search_button">search</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+{#	<div class="home_search">#}
+{#		<div class="container">#}
+{#			<div class="row">#}
+{#				<div class="col">#}
+{#					<div class="home_search_container">#}
+{#						<div class="home_search_title">Search for your trip</div>#}
+{#						<div class="home_search_content">#}
+{#							<form action="#" class="home_search_form" id="home_search_form">#}
+{#								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">#}
+{#									<input type="text" class="search_input search_input_1" placeholder="City" required="required">#}
+{#									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">#}
+{#									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">#}
+{#									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">#}
+{#									<button class="home_search_button">search</button>#}
+{#								</div>#}
+{#							</form>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
 
 	<!-- Intro -->
 
 	<div class="intro">
 		<div class="intro_background" style="background-image:url({% static 'images/intro.png' %})"></div>
 		<div class="container">
+
 			<div class="row">
 				<div class="col">
 					<div class="intro_container">
+                        <div class="text-center align-items-center align-content-center">
+                          <h2 class="text-info justify-content-center mb-5 align-content-center align-items-center"><u>What we offer...!</u></h2>
+                         </div>
 						<div class="row">
 
 							<!-- Intro Item -->
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
-									<div class="intro_icon"><img src="{% static 'images/beach.svg' %}" alt=""></div>
+									<div class="intro_icon"><img src="{% static 'images/top destination.png' %}" alt="" class="text-info"></div>
 									<div class="intro_content">
 										<div class="intro_title">Top Destinations</div>
-										<div class="intro_subtitle"><p>Maasai Mara National Park</p></div>
+										<div class="intro_subtitle"><p>We give you the best destinations to explore</p></div>
 									</div>
 								</div>
 							</div>
 
 							<!-- Intro Item -->
+
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
-									<div class="intro_icon"><img src="{% static 'images/wallet.svg' %}" alt=""></div>
+									<div class="intro_icon"><img src="{% static 'images/best-price.png' %}" alt=""></div>
 									<div class="intro_content">
 										<div class="intro_title">The Best Prices</div>
 										<div class="intro_subtitle"><p>Pocket friendly prices for you.</p></div>
@@ -245,7 +366,7 @@
 							<!-- Intro Item -->
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
-									<div class="intro_icon"><img src="{% static 'images/suitcase.svg' %}" alt=""></div>
+									<div class="intro_icon"><img src="{% static 'images/best services.png' %}" alt=""></div>
 									<div class="intro_content">
 										<div class="intro_title">Amazing Services</div>
 										<div class="intro_subtitle"><p>Our primary duty is to make you satisfied.</p></div>
@@ -266,27 +387,27 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="section_subtitle">simply amazing places</div>
-					<div class="section_title"><h2>Popular Destinations</h2></div>
+					<div class="section_subtitle text-danger">simply amazing places</div>
+					<div class="section_title"><h2 class="text-warning">Popular Destinations</h2></div>
 				</div>
 			</div>
-			<div class="row destinations_row">
+			<div class="row destinations_row align-content-center">
 				<div class="col">
-					<div class="destinations_container item_grid">
+					<div class="destinations_container item_grid align-items-center">
 
 						<!-- Destination -->
 						
 						{% for dest in dests %}
-						<div class="destination item">
+						<div class="destination item align-items-center align-content-center text-center">
 							<div class="destination_image">
-								<img src="{{dest.img.url}}" alt="">
+								<img class="align-items-center text-center" src="{{dest.img.url}}" alt="">
 								{% if dest.offer %}
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								{% endif %}
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="accounts/destinations">{{dest.name}}</a></div>
-								<div class="destination_subtitle"><p>{{dest.desc}}</p></div>
+								<div class="destination_subtitle justify-content-center text-justify"><p>{{dest.desc}}</p></div>
 								<div class="destination_price">From ${{dest.price}}</div>
 							</div>
 						</div>
@@ -306,7 +427,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="section_subtitle">simply amazing places</div>
+					<div class="section_subtitle text-danger">simply amazing places</div>
 					<div class="section_title"><h2>Testimonials</h2></div>
 				</div>
 			</div>
@@ -319,7 +440,7 @@
 							
 							<!-- Slide -->
 							<div class="owl-item text-center">
-								<div class="testimonial">When I first landed in Kenya, UniQuest Travels were there to help me navigate around. For sure, my trip was worth it. Thank you.</div>
+								<div class="testimonial text-warning">When I first landed in Kenya, UniQuest Travels were there to help me navigate around. For sure, my trip was worth it. Thank you.</div>
 								<div class="testimonial_author">
 									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
 										<div>john turner,</div>
@@ -355,13 +476,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="test_nav">
-			<ul class="d-flex flex-column align-items-end justify-content-end">
-				<li><a href="#">City Breaks Clients<span>01</span></a></li>
-				<li><a href="#">Cruises Clients<span>02</span></a></li>
-				<li><a href="#">All Inclusive Clients<span>03</span></a></li>
-			</ul>
-		</div>
+
 	</div>
 
 	<!-- News -->
@@ -374,16 +489,16 @@
 						
 						<!-- News Post -->
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_1.jpg' %}" alt=""></div>
+							<div class="news_post_image"><img src="{% static 'images/Maasai Mara National reserve.jpg' %}" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
+									<div class="text-success">02</div>
+									<div class="text-success">june</div>
 								</div>
 								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
 								<div class="news_post_category">
 									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
+										<li><a href="#" class="text-info">lifestyle & travel</a></li>
 									</ul>
 								</div>
 								<div class="news_post_text">
@@ -394,11 +509,11 @@
 
 						<!-- News Post -->
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_2.jpg' %}" alt=""></div>
+							<div class="news_post_image"><img src="{% static 'images/Giraffe C.jpg' %}" alt=""></div>
 							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>01</div>
-									<div>june</div>
+								<div class="news_post_date  d-flex flex-row align-items-end justify-content-start">
+									<div class="text-success">01</div>
+									<div class="text-success">june</div>
 								</div>
 								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
 								<div class="news_post_category">
@@ -413,12 +528,12 @@
 						</div>
 
 						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_3.jpg' %}" alt=""></div>
+						<div class="news_post d-flex flex-md-row flex-column align-items-center justify-content-center">
+							<div class="news_post_image"><img src="{% static 'images/Rift Valley.jpg' %}" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>29</div>
-									<div>may</div>
+									<div class="text-success">29</div>
+									<div class="text-success">may</div>
 								</div>
 								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
 								<div class="news_post_category">
@@ -438,7 +553,7 @@
 				<!-- News Sidebar -->
 				<div class="col-xl-4">
 					<div class="travello">
-						<div class="background_image" style="background-image:url({% static 'images/travello.jpg' %})"></div>
+						<div class="background_image" style="background-image:url({% static 'images/nrb.jpg' %})"></div>
 						<div class="travello_content">
 							<div class="travello_content_inner">
 								<div></div>
@@ -449,7 +564,7 @@
 							<a href="#">
 								<div class="d-flex flex-column align-items-center justify-content-end">
 									<span class="travello_title">Get a 20% Discount</span>
-									<span class="travello_subtitle">Buy Your Vacation Online Now</span>
+									<span class="travello_subtitle">Book Vacation Online Now</span>
 								</div>
 							</a>
 						</div>
