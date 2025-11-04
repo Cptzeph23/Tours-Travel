@@ -32,10 +32,10 @@
 							<div class="logo"><a href=".." class="text-danger">UniQuest Travels</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li><a href=".." class="text-warning"><b>Home</b></a></li>
-									<li class="active"><a href="about" class="text-warning"><b>About Us</b></a></li>
+									<li><a href="/" class="text-warning"><b>Home</b></a></li>
+									<li class="active"><a href="/about/" class="text-warning"><b>About Us</b></a></li>
 
-									<li><a href="contact" class="text-warning"><b>Contact</b></a></li>
+									<li><a href="/contact/" class="text-warning"><b>Contact</b></a></li>
 
 									{% if user.is_authenticated %}
 										<li><a href="logout" class="text-danger"><b>Logout</b></a></li>
@@ -85,9 +85,9 @@
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="..">Home</a></li>
-				<li class="active"><a href="about">About Us</a></li>
-				<li><a href="contact">Contact</a></li>
+				<li><a href="/">Home</a></li>
+				<li class="active"><a href="/about/">About Us</a></li>
+				<li><a href="/contact/">Contact</a></li>
 
 				{% if user.is_authenticated %}
 					<li><a href="logout">Logout</a></li>

@@ -159,8 +159,8 @@
 							<nav class="main_nav text-light">
 								<ul class="d-flex flex-row align-items-start justify-content-start text-light">
 									<li class="active"><a href="" class="text-warning"><b>Home</b></a></li>
-									<li><a href="accounts/about" class="text-warning"><b>About Us</b></a></li>
-									<li><a href="accounts/contact" class="text-warning"><b>Contact Us</b></a></li>
+									<li><a href="/about/" class="text-warning"><b>About Us</b></a></li>
+									<li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
 
 									{% if user.is_authenticated %}
 										<li><a href="accounts/logout" class="text-danger"><b>Logout</b></a></li>
@@ -213,9 +213,9 @@
 		<div class="menu_content">
 			<ul>
 				<li class="active"><a href="">Home</a></li>
-				<li><a href="accounts/about">About Us</a></li>
+				<li><a href="/about/">About Us</a></li>
 
-				<li><a href="accounts/contact">Contact</a></li>
+				<li><a href="/contact/">Contact</a></li>
 
 				{% if user.is_authenticated %}
 					<li><a href="accounts/logout">Logout</a></li>
@@ -409,7 +409,7 @@
 								{% endif %}
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="accounts/destinations">{{dest.name}}</a></div>
+								<div class="destination_title"><a href="/destinations/">{{dest.name}}</a></div>
 								<div class="destination_subtitle justify-content-center text-justify"><p>{{dest.desc}}</p></div>
 								<div class="destination_price">From ${{dest.price}}</div>
 							</div>
