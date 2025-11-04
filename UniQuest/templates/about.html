@@ -32,24 +32,23 @@
 							<div class="logo"><a href=".." class="text-danger">UniQuest Travels</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li><a href="..">Home</a></li>
-									<li class="active"><a href="about">About Us</a></li>
-									<li><a href="news">News</a></li>
-									<li><a href="contact">Contact</a></li>
+									<li><a href=".." class="text-warning"><b>Home</b></a></li>
+									<li class="active"><a href="about" class="text-warning"><b>About Us</b></a></li>
+
+									<li><a href="contact" class="text-warning"><b>Contact</b></a></li>
 
 									{% if user.is_authenticated %}
-										<li><a href="logout">Logout</a></li>
+										<li><a href="logout" class="text-danger"><b>Logout</b></a></li>
 									{% else %}
-										<li><a href="register">Register</a></li>
-										<li><a href="login">Login</a></li>
+										<li><a href="register" class="text-success"><b>Register</b></a></li>
+										<li><a href="login" class="text-success"><b>Login</b></a></li>
 									{% endif %}
 								</ul>
 							</nav>
 							{% if user.is_authenticated %}
-								<div class="header_phone ml-auto">Welcome, {{user.first_name}}</div>
+								<div class="header_phone ml-auto text-info">Welcome, {{user.first_name}}</div>
 							{% else %}
 								<div class="header_phone ml-auto">
-									<a style="color: white; font-size:xx-large;" href="https://www.instagram.com/cptzeph/" target="_blank">
 										<i class="fa fa-instagram" aria-hidden="false"></i>
 									</a>
 								</div>
@@ -68,12 +67,11 @@
 		</div>
 		<div class="header_social d-flex flex-row align-items-center justify-content-start">
 			<ul class="d-flex flex-row align-items-start justify-content-start">
-				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook text-info" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter text-primary" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin text-info" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
 			</ul>
 		</div>
 	</header>
@@ -89,7 +87,6 @@
 			<ul>
 				<li><a href="..">Home</a></li>
 				<li class="active"><a href="about">About Us</a></li>
-				<li><a href="news">News</a></li>
 				<li><a href="contact">Contact</a></li>
 
 				{% if user.is_authenticated %}
@@ -106,11 +103,8 @@
 			{% else %}
 				<div class="menu_phone ml-auto">Call us: +254703297902</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
-					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 				</ul>
 			{% endif %}
@@ -123,24 +117,26 @@
 		<div class="background_image" style="background-image:url({% static 'images/girafe.jpg' %})"></div>
 	</div>
 
-	<!-- Search -->
+	<!-- mission & vision -->
 
 	<div class="home_search">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
+						<div class="home_search_title"><h3>Uniquest travels</h3></div>
 						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
-								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
-									<button class="home_search_button">search</button>
-								</div>
-							</form>
+
+                     <section>
+                         <div>
+                             <h2>Mission</h2>
+                             <p>To make every journey a story worth telling through personalized, responsible, and unforgettable adventures."
+                                </p>
+
+                             <h2>Vision</h2>
+                             <p>To be a leading tour company recognized for delivering authentic, innovative, and sustainable travel experiences across Kenya and beyond</p>
+                         </div>
+                     </section>
 						</div>
 					</div>
 				</div>
@@ -163,15 +159,22 @@
 					<div class="about_content">
 						<div class="text_highlight">We are Travel agency. Helping you tour around Kenya.</div>
 						<div class="about_text">
-							<p>We are dedicated to providing seemless travle and access to services for you as you enjoy the beauty of Kenya.
-                                We are re a certified compnay under the Ministry of Tourism, trusted with great reputation offering transport facilities, connecting you to hotels for accommodation and meals and taking you places as we
-                                tell you the stories and more information about the destinations of your visit.</p>
+							<p>UniQuest was born from the dream of a young girl
+                                who believed the world was full of untold stories waiting to be discovered.
+                                That dream grew into a passion
+                                — to connect people, culture, and nature through meaningful travel experiences. <br>
+
+                                    At UniQuest, we don’t just plan tours; we curate journeys that leave footprints on both
+                                hearts and horizons. Every trip is designed to celebrate authenticity — blending adventure,
+                                culture, and comfort in perfect harmony. <br>
+
+                                        We believe travel should not only show you new places but also help you feel them — their rhythm, their people, and their hidden beauty.</p>
 						</div>
-						<div class="button about_button"><a href="#">read more</a></div>
+
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div class="about_image"><img src="{% static 'images/about_1.jpg' %}" alt=""></div>
+					<div class="about_image"><img src="{% static 'images/elephant 1.jpg' %}" alt=""></div>
 				</div>
 			</div>
 		</div>
@@ -186,36 +189,36 @@
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="{% static 'images/mountain.svg' %}" alt=""></div>
-						<div class="milestone_counter" data-end-value="17">0</div>
-						<div class="milestone_text">Online Courses</div>
+						<div class="milestone_icon"><img src="{% static 'images/destinations.png' %}" alt=""></div>
+						<div class="milestone_counter" data-end-value="100+">0</div>
+						<div class="milestone_text">Destinations</div>
 					</div>
 				</div>
 
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="{% static 'images/island.svg' %}" alt=""></div>
-						<div class="milestone_counter" data-end-value="213">0</div>
-						<div class="milestone_text">Students</div>
+						<div class="milestone_icon"><img src="{% static 'images/events.png' %}" alt=""></div>
+						<div class="milestone_counter" data-end-value="50+">0</div>
+						<div class="milestone_text">Events</div>
 					</div>
 				</div>
 
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="{% static 'images/camera.svg' %}" alt=""></div>
-						<div class="milestone_counter" data-end-value="11923">0</div>
-						<div class="milestone_text">Teachers</div>
+						<div class="milestone_icon"><img src="{% static 'images/tour guide.png' %}" alt=""></div>
+						<div class="milestone_counter" data-end-value="20">0</div>
+						<div class="milestone_text">Guides</div>
 					</div>
 				</div>
 
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="{% static 'images/boat.svg' %}" alt=""></div>
+						<div class="milestone_icon"><img src="{% static 'images/bus.png' %}" alt=""></div>
 						<div class="milestone_counter" data-end-value="15">0</div>
-						<div class="milestone_text">Counties</div>
+						<div class="milestone_text">Vehicles</div>
 					</div>
 				</div>
 
@@ -230,8 +233,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="section_subtitle">simply amazing places</div>
-					<div class="section_title"><h2>Why choose us?</h2></div>
+					<div class="section_subtitle text-danger">simply amazing places</div>
+					<div class="section_title"><h2 class="text-warning">Why choose us?</h2></div>
 				</div>
 			</div>
 			<div class="row why_row">

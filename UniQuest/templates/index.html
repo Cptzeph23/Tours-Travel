@@ -158,16 +158,15 @@
 							<div class="logo text-danger"><a href="" class="text-danger "><b>UniQuest Travels</b></a></div>
 							<nav class="main_nav text-light">
 								<ul class="d-flex flex-row align-items-start justify-content-start text-light">
-									<li class="active"><a href="" class="text-warning">Home</a></li>
-									<li><a href="accounts/about" class="text-warning">About Us</a></li>
-									<li><a href="accounts/news" class="text-warning">News</a></li>
-									<li><a href="accounts/contact" class="text-warning">Contact Us</a></li>
+									<li class="active"><a href="" class="text-warning"><b>Home</b></a></li>
+									<li><a href="accounts/about" class="text-warning"><b>About Us</b></a></li>
+									<li><a href="accounts/contact" class="text-warning"><b>Contact Us</b></a></li>
 
 									{% if user.is_authenticated %}
-										<li><a href="accounts/logout" class="text-danger">Logout</a></li>
+										<li><a href="accounts/logout" class="text-danger"><b>Logout</b></a></li>
 									{% else %}
-										<li><a href="accounts/register" class="text-primary">Register</a></li>
-										<li><a href="accounts/login" class="text-primary">Login</a></li>
+										<li><a href="accounts/register" class="text-primary"><b>Register</b></a></li>
+										<li><a href="accounts/login" class="text-primary"><b>Login</b></a></li>
 									{% endif %}
 								</ul>
 							</nav>
@@ -175,7 +174,7 @@
 								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
 							{% else %}
 								<div class="header_phone ml-auto">
-									<a style="color: white; font-size:xx-large;" href="https://www.instagram.com/cptzeph/" target="_blank">
+
 										<i class="fa fa-instagram" aria-hidden="false"></i>
 									</a>
 								</div>
@@ -194,9 +193,12 @@
 		</div>
 		<div class="header_social d-flex flex-row align-items-center justify-content-start">
 			<ul class="d-flex flex-row align-items-start justify-content-start">
-				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook text-info" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter text-primary" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin text-info" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
 			</ul>
 		</div>
 	</header>
@@ -212,7 +214,7 @@
 			<ul>
 				<li class="active"><a href="">Home</a></li>
 				<li><a href="accounts/about">About Us</a></li>
-				<li><a href="accounts/news">News</a></li>
+
 				<li><a href="accounts/contact">Contact</a></li>
 
 				{% if user.is_authenticated %}
@@ -346,7 +348,7 @@
 									<div class="intro_icon"><img src="{% static 'images/top destination.png' %}" alt="" class="text-info"></div>
 									<div class="intro_content">
 										<div class="intro_title">Top Destinations</div>
-										<div class="intro_subtitle"><p>We give you the best destinations to explore</p></div>
+										<div class="intro_subtitle"><p>We give you the most adventurous destinations to explore</p></div>
 									</div>
 								</div>
 							</div>
@@ -369,7 +371,7 @@
 									<div class="intro_icon"><img src="{% static 'images/best services.png' %}" alt=""></div>
 									<div class="intro_content">
 										<div class="intro_title">Amazing Services</div>
-										<div class="intro_subtitle"><p>Our primary duty is to make you satisfied.</p></div>
+										<div class="intro_subtitle"><p>Our primary duty is to keep you satisfied making every trip memorable with stories worth telling</p></div>
 									</div>
 								</div>
 							</div>
@@ -383,7 +385,8 @@
 
 	<!-- Destinations -->
 
-	<div class="destinations" id="destinations">
+	<section>
+        <div class="destinations" id="destinations">
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
@@ -396,7 +399,7 @@
 					<div class="destinations_container item_grid align-items-center">
 
 						<!-- Destination -->
-						
+
 						{% for dest in dests %}
 						<div class="destination item align-items-center align-content-center text-center">
 							<div class="destination_image">
@@ -420,9 +423,20 @@
 		</div>
 	</div>
 
+    </section>
+
+<section class="text-center text-light">
+    <div>
+        <h2 class="text-success">Book Now On WhatsApp!</h2>
+        <p>For Quick service, reach out to us on WhatsApp</p>
+        <p>Send us your name, desired destination and date of visit</p>
+        <button  type="button" class="btn-warning rounded  text-info"><a href="#"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i>Chat on Whatsapp</a></button>
+    </div>
+</section>
+
 	<!-- Testimonials -->
 
-	<div class="testimonials" id="testimonials">
+	<div class="testimonials mb-5 mt-5" id="testimonials" >
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/nrb.jpg' %}" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
@@ -478,106 +492,110 @@
 		</div>
 
 	</div>
+<section class="text-light">
 
-	<!-- News -->
+</section>
 
-	<div class="news" id="news">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-8">
-					<div class="news_container">
-						
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/Maasai Mara National reserve.jpg' %}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div class="text-success">02</div>
-									<div class="text-success">june</div>
-								</div>
-								<div class="news_post_title"><a href="#">From Game Parks...</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#" class="text-info">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Enjoy The famous Maasai Mara national reserve, the wildbeast migrations and many more.</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/Giraffe C.jpg' %}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date  d-flex flex-row align-items-end justify-content-start">
-									<div class="text-success">01</div>
-									<div class="text-success">june</div>
-								</div>
-								<div class="news_post_title"><a href="#">To Orphanages</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>From the reserves such as Giraffe centre to exemplary restuarants like the Karen Blixen</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-center justify-content-center">
-							<div class="news_post_image"><img src="{% static 'images/Rift Valley.jpg' %}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div class="text-success">29</div>
-									<div class="text-success">may</div>
-								</div>
-								<div class="news_post_title"><a href="#">And National Reserves</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Venture into the wonders of the Great Rift Valley .</p>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- News Sidebar -->
-				<div class="col-xl-4">
-					<div class="travello">
-						<div class="background_image" style="background-image:url({% static 'images/nrb.jpg' %})"></div>
-						<div class="travello_content">
-							<div class="travello_content_inner">
-								<div></div>
-								<div></div>
-							</div>
-						</div>
-						<div class="travello_container">
-							<a href="#">
-								<div class="d-flex flex-column align-items-center justify-content-end">
-									<span class="travello_title">Get a 20% Discount</span>
-									<span class="travello_subtitle">Book Vacation Online Now</span>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+{#	<!-- News -->#}
+{##}
+{#	<div class="news" id="news">#}
+{#		<div class="container">#}
+{#			<div class="row">#}
+{#				<div class="col-xl-8">#}
+{#					<div class="news_container">#}
+{#						#}
+{#						<!-- News Post -->#}
+{#						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">#}
+{#							<div class="news_post_image"><img src="{% static 'images/Maasai Mara National reserve.jpg' %}" alt=""></div>#}
+{#							<div class="news_post_content">#}
+{#								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">#}
+{#									<div class="text-success">02</div>#}
+{#									<div class="text-success">june</div>#}
+{#								</div>#}
+{#								<div class="news_post_title"><a href="#">From Game Parks...</a></div>#}
+{#								<div class="news_post_category">#}
+{#									<ul>#}
+{#										<li><a href="#" class="text-info">lifestyle & travel</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#								<div class="news_post_text">#}
+{#									<p>Enjoy The famous Maasai Mara national reserve, the wildbeast migrations and many more.</p>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{#						<!-- News Post -->#}
+{#						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">#}
+{#							<div class="news_post_image"><img src="{% static 'images/Giraffe C.jpg' %}" alt=""></div>#}
+{#							<div class="news_post_content">#}
+{#								<div class="news_post_date  d-flex flex-row align-items-end justify-content-start">#}
+{#									<div class="text-success">01</div>#}
+{#									<div class="text-success">june</div>#}
+{#								</div>#}
+{#								<div class="news_post_title"><a href="#">To Orphanages</a></div>#}
+{#								<div class="news_post_category">#}
+{#									<ul>#}
+{#										<li><a href="#">lifestyle & travel</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#								<div class="news_post_text">#}
+{#									<p>From the reserves such as Giraffe centre to exemplary restuarants like the Karen Blixen</p>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{#						<!-- News Post -->#}
+{#						<div class="news_post d-flex flex-md-row flex-column align-items-center justify-content-center">#}
+{#							<div class="news_post_image"><img src="{% static 'images/Rift Valley.jpg' %}" alt=""></div>#}
+{#							<div class="news_post_content">#}
+{#								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">#}
+{#									<div class="text-success">29</div>#}
+{#									<div class="text-success">may</div>#}
+{#								</div>#}
+{#								<div class="news_post_title"><a href="#">And National Reserves</a></div>#}
+{#								<div class="news_post_category">#}
+{#									<ul>#}
+{#										<li><a href="#">lifestyle & travel</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#								<div class="news_post_text">#}
+{#									<p>Venture into the wonders of the Great Rift Valley .</p>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{#					</div>#}
+{#				</div>#}
+{##}
+{#				<!-- News Sidebar -->#}
+{#				<div class="col-xl-4">#}
+{#					<div class="travello">#}
+{#						<div class="background_image" style="background-image:url({% static 'images/nrb.jpg' %})"></div>#}
+{#						<div class="travello_content">#}
+{#							<div class="travello_content_inner">#}
+{#								<div></div>#}
+{#								<div></div>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="travello_container">#}
+{#							<a href="#">#}
+{#								<div class="d-flex flex-column align-items-center justify-content-end">#}
+{#									<span class="travello_title">Get a 20% Discount</span>#}
+{#									<span class="travello_subtitle">Book Vacation Online Now</span>#}
+{#								</div>#}
+{#							</a>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
 
 	<!-- Footer -->
 
-	<footer class="footer">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cheetah.jpg' %}" data-speed="0.8"></div>
+<section>
+    	<footer class="footer">
+		<div class="parallax_background mt-5 parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cheetah.jpg' %}" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -653,6 +671,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</footer>
 </div>
 
+</section>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
