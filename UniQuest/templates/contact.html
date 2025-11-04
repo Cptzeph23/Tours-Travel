@@ -31,18 +31,22 @@
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
 							<div class="logo text-danger"><a href="" class="text-danger "><b>UniQuest Travels</b></a></div>
 							<nav class="main_nav text-light">
-								<ul class="d-flex flex-row align-items-start justify-content-start text-light">
-									<li class="active"><a href="" class="text-warning"><b>Home</b></a></li>
-									<li><a href="/about/" class="text-warning"><b>About Us</b></a></li>
-									<li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
+                                <ul class="d-flex flex-row align-items-start justify-content-start">
+									<li><a href="/" class="text-warning"><b>Home</b></a></li>
+									<li x><a href="/about/" class="text-warning"><b>About Us</b></a></li>
+
+									<li class="active"><a href="/contact/" class="text-warning"><b>Contact</b></a></li>
+                                    <li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
 
 									{% if user.is_authenticated %}
-										<li><a href="accounts/logout" class="text-danger"><b>Logout</b></a></li>
+{#										<li><a href="logout" class="text-danger"><b>Logout</b></a></li>#}
+
 									{% else %}
-										<li><a href="accounts/register" class="text-primary"><b>Register</b></a></li>
-										<li><a href="accounts/login" class="text-primary"><b>Login</b></a></li>
+										<li><a href="register" class="text-success"><b>Register</b></a></li>
+										<li><a href="login" class="text-success"><b>Login</b></a></li>
 									{% endif %}
 								</ul>
+
 							</nav>
 							{% if user.is_authenticated %}
 								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
@@ -85,12 +89,13 @@
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="/">Home</a></li>
+				<li><a href="/index/">Home</a></li>
 				<li><a href="/about/">About Us</a></li>
 				<li class="active"><a href="/contact/">Contact</a></li>
 
 				{% if user.is_authenticated %}
-					<li><a href="/logout/">Logout</a></li>
+{#					<li><a href="/logout/">Logout</a></li>#}
+{#                    #}
 				{% else %}
 					<li><a href="/register/">Register</a></li>
 					<li><a href="/login/">Login</a></li>

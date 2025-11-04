@@ -36,9 +36,10 @@
 									<li class="active"><a href="/about/" class="text-warning"><b>About Us</b></a></li>
 
 									<li><a href="/contact/" class="text-warning"><b>Contact</b></a></li>
+                                     <li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
 
 									{% if user.is_authenticated %}
-										<li><a href="logout" class="text-danger"><b>Logout</b></a></li>
+										<li><a href="logout" class="text-danger"><b></b></a></li>
 									{% else %}
 										<li><a href="register" class="text-success"><b>Register</b></a></li>
 										<li><a href="login" class="text-success"><b>Login</b></a></li>
@@ -85,7 +86,7 @@
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="/">Home</a></li>
+				<li><a href="/index/">Home</a></li>
 				<li class="active"><a href="/about/">About Us</a></li>
 				<li><a href="/contact/">Contact</a></li>
 

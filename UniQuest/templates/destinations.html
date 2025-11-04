@@ -30,27 +30,28 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="/">UniQuest Travels</a></div>
+							<div class="logo"><a href="/" class="text-danger">UniQuest Travels</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li><a href="/">Home</a></li>
-									<li><a href="/about/">About Us</a></li>
-									<li><a href="/news/">News</a></li>
-									<li class="active"><a href="/destinations/">Destinations</a></li>
+									<li><a href="/" class="text-warning">Home</a></li>
+                                    <li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
+									<li><a href="/about/" class="text-warning">About Us</a></li>
 
-									{% if user.is_authenticated %}
-										<li><a href="/logout/">Logout</a></li>
-									{% else %}
-										<li><a href="/register/">Register</a></li>
-										<li><a href="/login/">Login</a></li>
-									{% endif %}
+									<li class="active text-warning" ><a href="/destinations/" class="text-warning">Destinations</a></li>
+{##}
+{#									{% if user.is_authenticated %}#}
+{#										<li><a href="/logout/">Logout</a></li>#}
+{#									{% else %}#}
+{#										<li><a href="/register/">Register</a></li>#}
+{#										<li><a href="/login/">Login</a></li>#}
+{#									{% endif %}#}
 								</ul>
 							</nav>
 							{% if user.is_authenticated %}
-								<div class="header_phone ml-auto">Welcome, {{user.first_name}}</div>
+								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
 							{% else %}
 								<div class="header_phone ml-auto">
-									<a style="color: white; font-size:xx-large;" href="https://www.instagram.com/kmranrg/" target="_blank">
+									<a style="color: white; font-size:xx-large;" href="https://www.instagram.com/cptzeph/" target="_blank">
 										<i class="fa fa-instagram" aria-hidden="false"></i>
 									</a>
 								</div>
@@ -69,12 +70,12 @@
 		</div>
 		<div class="header_social d-flex flex-row align-items-center justify-content-start">
 			<ul class="d-flex flex-row align-items-start justify-content-start">
-				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook text-primary" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter text-primary" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin text-info" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
 			</ul>
 		</div>
 	</header>
@@ -106,14 +107,16 @@
 				<div class="menu_phone ml-auto">Logged in: {{user.first_name}} {{user.last_name}}</div>
 			{% else %}
 				<div class="menu_phone ml-auto">Call us: +254703297902</div>
-				<ul class="d-flex flex-row align-items-start justify-content-start">
-					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-				</ul>
+				<div class="header_social d-flex flex-row align-items-center justify-content-start">
+			<ul class="d-flex flex-row align-items-start justify-content-start">
+				<li><a href="#"><i class="fa fa-facebook text-primary" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter text-primary" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin text-info" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
+			</ul>
+		</div>
 			{% endif %}
 		</div>
 	</div>
@@ -121,33 +124,9 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="background_image" style="background-image:url({% static 'images/destinations.jpg' %})"></div>
+		<div class="background_image" style="background-image:url({% static 'images/destination3.jpg' %})"></div>
 	</div>
 
-	<!-- Search -->
-
-	<div class="home_search">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
-						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
-								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
-									<button class="home_search_button">search</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Destinations -->
 
@@ -163,26 +142,26 @@
 				<div class="col">
 					<div class="destination_sorting d-flex flex-row align-items-center justify-content-center">
 						<div class="sorting">
-							<ul class="item_sorting">
-								<li>
-									<span class="sorting_text">Sort By</span>
-									<i class="fa fa-chevron-down" aria-hidden="true"></i>
-									<ul>
-										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Show All</span></li>
-										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
-										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Name</span></li>
-									</ul>
-								</li>
-								<li>
-									<span class="sorting_text">Categories</span>
-									<i class="fa fa-chevron-down" aria-hidden="true"></i>
-									<ul>
-										<li class="num_sorting_btn"><span>Category</span></li>
-										<li class="num_sorting_btn"><span>Category</span></li>
-										<li class="num_sorting_btn"><span>Category</span></li>
-									</ul>
-								</li>
-							</ul>
+{#							<ul class="item_sorting">#}
+{#								<li>#}
+{#									<span class="sorting_text">Sort By</span>#}
+{#									<i class="fa fa-chevron-down" aria-hidden="true"></i>#}
+{#									<ul>#}
+{#										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Show All</span></li>#}
+{#										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>#}
+{#										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Name</span></li>#}
+{#									</ul>#}
+{#								</li>#}
+{#								<li>#}
+{#									<span class="sorting_text">Categories</span>#}
+{#									<i class="fa fa-chevron-down" aria-hidden="true"></i>#}
+{#									<ul>#}
+{#										<li class="num_sorting_btn"><span>Category</span></li>#}
+{#										<li class="num_sorting_btn"><span>Category</span></li>#}
+{#										<li class="num_sorting_btn"><span>Category</span></li>#}
+{#									</ul>#}
+{#								</li>#}
+{#							</ul>#}
 						</div>
 						<div class="sort_box ml-auto"><i class="fa fa-th" aria-hidden="true"></i></div>
 					</div>
@@ -195,7 +174,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_1.jpg' %}" alt="">
+								<img src="{% static 'images/kanairo.jpg' %}" alt="">
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 							</div>
 							<div class="destination_content">
@@ -216,7 +195,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_2.jpg' %}" alt="">
+								<img src="{% static 'images/naks.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="#">Nakuru</a></div>
@@ -236,7 +215,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_3.jpg' %}" alt="">
+								<img src="{% static 'images/mombasa.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="#">Mombasa</a></div>
@@ -256,7 +235,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_4.jpg' %}" alt="">
+								<img src="{% static 'images/naivasha.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="#">Naivasha</a></div>
@@ -276,7 +255,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_5.jpg' %}" alt="">
+								<img src="{% static 'images/eld.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="#">Eldoret</a></div>
@@ -296,7 +275,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_6.jpg' %}" alt="">
+								<img src="{% static 'images/iten.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="#">Iten</a></div>
@@ -316,7 +295,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_7.jpg' %}" alt="">
+								<img src="{% static 'images/kilifi.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="#">Kilifi</a></div>
@@ -336,10 +315,10 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_8.jpg' %}" alt="">
+								<img src="{% static 'images/elgon.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="#">Elgon</a></div>
+								<div class="destination_title"><a href="#">Mt. Elgon</a></div>
 								<div class="destination_subtitle"><p>Mountaneering</p></div>
 								<div class="destination_price">From $500</div>
 								<div class="destination_list">
@@ -356,10 +335,10 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_9.jpg' %}" alt="">
+								<img src="{% static 'images/longonot.jpg' %}" alt="">
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="#">Longonot</a></div>
+								<div class="destination_title"><a href="#">Mt. Longonot</a></div>
 								<div class="destination_subtitle"><p>Mountaneering</p></div>
 								<div class="destination_price">From $400</div>
 								<div class="destination_list">
@@ -377,17 +356,26 @@
 				</div>
 			</div>
 			<div class="row load_more_row">
-				<div class="col">
-					<div class="button load_more_button"><a href="#">load more</a></div>
-				</div>
+
 			</div>
 		</div>
 	</div>
 
+<section class="text-center text-light">
+    <div>
+        <h2 class="text-success">For Bookings and More...</h2>
+        <p>Contact us on WhatsApp</p>
+        <p>Send us your name, desired destination and date of visit</p> <br>
+        <div><button style="background-color: #032042;" class="newsletter_button btn-warning"><a href="https://wa.me/+254703297902" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i> <b>Chat on Whatsapp</b></a></button></div>
+
+    </div>
+</section>
+
 	<!-- Footer -->
 
-	<footer class="footer">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer_1.jpg' %}" data-speed="0.8"></div>
+<section>
+    	<footer class="footer">
+		<div class="parallax_background mt-5 parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cheetah.jpg' %}" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -433,7 +421,7 @@
 								<div class="footer_contact_title">come & drop by</div>
 								<div class="footer_contact_list">
 									<ul style="max-width:190px">
-										<li>00100, Karen Nairobi</li>
+										<li>00100 Karen, Nairobi</li>
 									</ul>
 								</div>
 							</div>
@@ -447,7 +435,7 @@
 								<div class="footer_contact_list">
 									<ul>
 										<li>askzeph20@gmail.com</li>
-										<li>uniquest@gmail.com</li>
+										<li>uniquesttravels@gmail.com</li>
 									</ul>
 								</div>
 							</div>
@@ -458,19 +446,21 @@
 			</div>
 		</div>
 		<div style="background-color: black;" class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://instagram.com/cptzeph" target="_blank">Cptzeph</a> | Credits:<a href="https://colorlib.com/" target="_blank"> Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
 	</footer>
 </div>
 
+</section>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
 <script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-<script src="{% static 'plugins/easing/easing.js' %}"></script>
 <script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
 <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-<script src="{% static 'js/destinations.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
@@ -485,5 +475,4 @@
 
 </body>
 
-<!-- Mirrored from preview.colorlib.com/theme/travello/destinations.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Oct 2020 12:13:01 GMT -->
 </html>
