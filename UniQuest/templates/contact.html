@@ -29,27 +29,26 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="..">UniQuest travels</a></div>
-							<nav class="main_nav">
-								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li><a href="..">Home</a></li>
-									<li><a href="about">About Us</a></li>
-									<li><a href="news">News</a></li>
-									<li class="active"><a href="contact">Contact</a></li>
+							<div class="logo text-danger"><a href="" class="text-danger "><b>UniQuest Travels</b></a></div>
+							<nav class="main_nav text-light">
+								<ul class="d-flex flex-row align-items-start justify-content-start text-light">
+									<li class="active"><a href="" class="text-warning"><b>Home</b></a></li>
+									<li><a href="accounts/about" class="text-warning"><b>About Us</b></a></li>
+									<li><a href="accounts/contact" class="text-warning"><b>Contact Us</b></a></li>
 
 									{% if user.is_authenticated %}
-										<li><a href="logout">Logout</a></li>
+										<li><a href="accounts/logout" class="text-danger"><b>Logout</b></a></li>
 									{% else %}
-										<li><a href="register">Register</a></li>
-										<li><a href="login">Login</a></li>
+										<li><a href="accounts/register" class="text-primary"><b>Register</b></a></li>
+										<li><a href="accounts/login" class="text-primary"><b>Login</b></a></li>
 									{% endif %}
 								</ul>
 							</nav>
 							{% if user.is_authenticated %}
-								<div class="header_phone ml-auto">Welcome, {{user.first_name}}</div>
+								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
 							{% else %}
 								<div class="header_phone ml-auto">
-									<a style="color: white; font-size:xx-large;" href="https://www.instagram.com/kmranrg/" target="_blank">
+
 										<i class="fa fa-instagram" aria-hidden="false"></i>
 									</a>
 								</div>
@@ -103,7 +102,7 @@
 			{% if user.is_authenticated %}
 				<div class="menu_phone ml-auto">Logged in: {{user.first_name}} {{user.last_name}}</div>
 			{% else %}
-				<div class="menu_phone ml-auto">Call us: 00-56 445 678 33</div>
+				<div class="menu_phone ml-auto">Call us:+254703297902</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li><a href="#"><i class="fa fa-facebook text-info" aria-hidden="true"></i></a></li>
 				<li><a href="#"><i class="fa fa-twitter text-primary" aria-hidden="true"></i></a></li>
@@ -118,33 +117,10 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="background_image" style="background-image:url({% static 'images/contact.jpg' %})"></div>
+		<div class="background_image" style="background-image:url({% static 'images/simba.jpg' %})"></div>
 	</div>
 
-	<!-- Search -->
 
-	<div class="home_search">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
-						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
-								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
-									<button class="home_search_button">search</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Contact -->
 
@@ -201,22 +177,20 @@
 	</div>
 
 	<!-- Map -->
+<section>
+    <div>
+        <div class="m-sm-5">
+            	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.32335424496!2d36.84739685000001!3d-1.3032089500000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2snl!4v1762263937353!5m2!1sen!2snl" width="1800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-	<div class="contact_map">
-		<!-- Google Map -->
-		<div class="map">
-			<div id="google_map" class="google_map">
-				<div class="map_container">
-					<div id="map"></div>
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+    </div>
+</section>
 
 	<!-- Footer -->
 
-	<footer class="footer">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer_1.jpg' %}" data-speed="0.8"></div>
+<section>
+    	<footer class="footer">
+		<div class="parallax_background mt-5 parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cheetah.jpg' %}" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -228,8 +202,8 @@
 						<div class="newsletter_form_container">
 							<form action="#" class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between" id="newsletter_form">
 								<div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
-									<div><input type="text" class="newsletter_input newsletter_input_name inpt" id="newsletter_input_name" placeholder="Name" required="required"><div class="input_border"></div></div>
-									<div><input type="email" class="newsletter_input newsletter_input_email inpt" id="newsletter_input_email" placeholder="Your e-mail" required="required"><div class="input_border"></div></div>
+									<div><input type="text" class="newsletter_input newsletter_input_name" id="newsletter_input_name" placeholder="Name" required="required"><div class="input_border"></div></div>
+									<div><input type="email" class="newsletter_input newsletter_input_email" id="newsletter_input_email" placeholder="Your e-mail" required="required"><div class="input_border"></div></div>
 								</div>
 								<div><button style="background-color: brown;" class="newsletter_button">subscribe</button></div>
 							</form>
@@ -262,7 +236,7 @@
 								<div class="footer_contact_title">come & drop by</div>
 								<div class="footer_contact_list">
 									<ul style="max-width:190px">
-										<li>00100, Karen Nairobi</li>
+										<li>00100 Karen, Nairobi</li>
 									</ul>
 								</div>
 							</div>
@@ -287,19 +261,21 @@
 			</div>
 		</div>
 		<div style="background-color: black;" class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://instagram.com/cptzeph" target="_blank">Cptzeph</a> | Credits:<a href="https://colorlib.com/" target="_blank"> Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
 	</footer>
 </div>
 
+</section>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
 <script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
 <script src="{% static 'plugins/easing/easing.js' %}"></script>
 <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
