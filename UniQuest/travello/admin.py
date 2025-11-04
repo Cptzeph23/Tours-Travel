@@ -1,9 +1,19 @@
 from django.contrib import admin
 from .models import Destination, Contact
 
-# Register your models here.
+# Register models with basic admin configuration
+@admin.register(Destination)
+class DestinationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'offer')
+    list_filter = ('offer',)
+    search_fields = ('name', 'desc')
 
-admin.site.register(Destination)
-admin.site.register(Contact)
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('name', 'email', 'subject', 'message')
+    readonly_fields = ('created_at',)
+    ordering = ('-created_at',)
 
 

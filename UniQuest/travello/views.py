@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from .models import Destination
+from django.shortcuts import render, redirect
+from .models import Destination, Contact
+from .forms import ContactForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -8,7 +10,18 @@ def index(request):
     return render(request, 'index.html', {'dests': dests})
 
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect('contact')  # redirect to the same page
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
 
 def about(request):
     return render(request, 'about.html')

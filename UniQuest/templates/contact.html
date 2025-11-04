@@ -157,17 +157,53 @@
 				<!-- Contact Form -->
 				<div class="col-lg-6">
 					<div class="contact_form_container">
-						<form action="#" id="contact_form" class="contact_form">
-							<div style="margin-bottom: 18px"><input type="text" class="contact_input contact_input_name inpt" placeholder="Your Name" required="required"><div class="input_border"></div></div>
+						{% if messages %}
+							{% for message in messages %}
+								<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+									{{ message }}
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							{% endfor %}
+						{% endif %}
+						
+						<form method="post" id="contact_form" class="contact_form">
+							{% csrf_token %}
+							<div style="margin-bottom: 18px">
+								<input type="text" name="name" class="contact_input contact_input_name inpt" placeholder="Your Name" required="required" value="{{ form.name.value|default:'' }}">
+								<div class="input_border"></div>
+								{% if form.name.errors %}
+									<small class="text-danger">{{ form.name.errors.0 }}</small>
+								{% endif %}
+							</div>
 							<div class="row">
 								<div class="col-lg-6" style="margin-bottom: 18px">
-									<div><input type="text" class="contact_input contact_input_email inpt" placeholder="Your E-mail" required="required"><div class="input_border"></div></div>
+									<div>
+										<input type="email" name="email" class="contact_input contact_input_email inpt" placeholder="Your E-mail" required="required" value="{{ form.email.value|default:'' }}">
+										<div class="input_border"></div>
+										{% if form.email.errors %}
+											<small class="text-danger">{{ form.email.errors.0 }}</small>
+										{% endif %}
+									</div>
 								</div>
 								<div class="col-lg-6" style="margin-bottom: 18px">
-									<div><input type="text" class="contact_input contact_input_subject inpt" placeholder="Subject" required="required"><div class="input_border"></div></div>
+									<div>
+										<input type="text" name="subject" class="contact_input contact_input_subject inpt" placeholder="Subject" required="required" value="{{ form.subject.value|default:'' }}">
+										<div class="input_border"></div>
+										{% if form.subject.errors %}
+											<small class="text-danger">{{ form.subject.errors.0 }}</small>
+										{% endif %}
+									</div>
 								</div>
 							</div>
-							<div><textarea class="contact_textarea contact_input inpt" placeholder="Message" required="required"></textarea><div class="input_border" style="bottom:3px"></div></div>
+							<div style="margin-bottom: 18px">
+								<textarea name="message" class="contact_textarea contact_input inpt" placeholder="Message" required="required">{{ form.message.value|default:'' }}</textarea>
+								<div class="input_border" style="bottom:3px"></div>
+								{% if form.message.errors %}
+									<small class="text-danger">{{ form.message.errors.0 }}</small>
+								{% endif %}
+							</div>
 							<button type="submit" class="contact_button">send</button>
 						</form>
 					</div>
