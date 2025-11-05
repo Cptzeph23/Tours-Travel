@@ -76,15 +76,17 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo text-danger"><a href="">UniQuest Travels</a></div>
+			<div class="menu_logo text-danger"><a href="" class="text-danger">UniQuest Travels</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li class="active"><a href="">Home</a></li>
-				<li><a href="/about/">About Us</a></li>
+				<li class="active"><a href="" class="text-warning">Home</a></li>
+				<li><a href="/about/" class="text-warning">About Us</a></li>
 
-				<li><a href="/contact/">Contact</a></li>
+				<li><a href="/contact/" class="text-warning">Contact</a></li>
+                <li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
+
 
 				{% if user.is_authenticated %}
 					<li><a href="accounts/logout">Logout</a></li>
@@ -98,7 +100,7 @@
 			{% if user.is_authenticated %}
 				<div class="menu_phone ml-auto">Logged in: {{user.first_name}} {{user.last_name}}</div>
 			{% else %}
-				<div class="menu_phone ml-auto">Call us: +254769634078</div>
+				<div class="menu_phone text-success ml-auto">Call us: +254769634078</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
