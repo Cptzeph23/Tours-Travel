@@ -164,3 +164,8 @@ MEDIA_ROOT = BASE_DIR / "staticfiles/media"
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Cloudinary media URL override
+MEDIA_URL = 'https://res.cloudinary.com/%s/' % CLOUDINARY_CLOUD_NAME
+
+
