@@ -3,9 +3,14 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Destination(models.Model):
-
-    name =  models.CharField(max_length=100)
-    img = CloudinaryField('image')
+    name = models.CharField(max_length=100)
+    img = CloudinaryField(
+        'image',
+        folder='destinations',  # Organize images in a folder
+        use_filename=True,      # Use original filename
+        unique_filename=False,  # Don't make unique if same filename
+        overwrite=True          # Overwrite if same filename
+    )
     desc = models.TextField()
     price = models.IntegerField()
     offer = models.BooleanField(default=False)

@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'accounts',
     'cloudinary',
-    'cloudinary_storage',
+    #'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -160,12 +160,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # MEDIA: push media into staticfiles/media (so whitenoise can serve)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "staticfiles/media"
+MEDIA_ROOT = BASE_DIR / "media"
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Cloudinary media URL override
-MEDIA_URL = 'https://res.cloudinary.com/%s/' % CLOUDINARY_CLOUD_NAME
 
 
