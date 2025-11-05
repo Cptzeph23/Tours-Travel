@@ -16,6 +16,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/about.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css' %}">
+
+        <!--Favicon-->
+  <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
 </head>
 <body>
 
@@ -29,27 +32,20 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href=".." class="text-danger">UniQuest Travels</a></div>
-							<nav class="main_nav">
-								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li><a href="/" class="text-warning"><b>Home</b></a></li>
-									<li class="active"><a href="/about/" class="text-warning"><b>About Us</b></a></li>
-
-									<li><a href="/contact/" class="text-warning"><b>Contact</b></a></li>
-                                     <li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
-
-									{% if user.is_authenticated %}
-										<li><a href="logout" class="text-danger"><b></b></a></li>
-									{% else %}
-										<li><a href="register" class="text-success"><b>Register</b></a></li>
-										<li><a href="login" class="text-success"><b>Login</b></a></li>
-									{% endif %}
-								</ul>
-							</nav>
+								<div class="logo text-danger"><a href="/" class="text-danger "><b>UniQuest Travels</b></a></div>
+								<nav class="main_nav text-light ml-auto">
+									<ul class="d-flex flex-row align-items-start justify-content-start text-light">
+										<li><a href="/" class="text-warning"><b>Home</b></a></li>
+										<li class="active"><a href="/about/" class="text-warning"><b>About Us</b></a></li>
+										<li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
+										<li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
+									</ul>
+								</nav>
 							{% if user.is_authenticated %}
-								<div class="header_phone ml-auto text-info">Welcome, {{user.first_name}}</div>
+								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
 							{% else %}
 								<div class="header_phone ml-auto">
+
 										<i class="fa fa-instagram" aria-hidden="false"></i>
 									</a>
 								</div>
@@ -68,11 +64,10 @@
 		</div>
 		<div class="header_social d-flex flex-row align-items-center justify-content-start">
 			<ul class="d-flex flex-row align-items-start justify-content-start">
-				<li><a href="#"><i class="fa fa-facebook text-info" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter text-primary" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-linkedin text-info" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+				<li><a href="https://www.facebook.com/profile.php?id=61583113811233" target="_blank"><i class="fa fa-facebook text-primary" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/uniquestadventure?igsh=OGN2Y3M2Zzh3dnAw" target="_blank"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="https://wa.me/+254769634078" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
 			</ul>
 		</div>
 	</header>
@@ -81,20 +76,21 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="..">Uniquest Travel</a></div>
+			<div class="menu_logo text-danger"><a href="">UniQuest Travels</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="/index/">Home</a></li>
-				<li class="active"><a href="/about/">About Us</a></li>
+				<li class="active"><a href="">Home</a></li>
+				<li><a href="/about/">About Us</a></li>
+
 				<li><a href="/contact/">Contact</a></li>
 
 				{% if user.is_authenticated %}
-					<li><a href="logout">Logout</a></li>
+					<li><a href="accounts/logout">Logout</a></li>
 				{% else %}
-					<li><a href="register">Register</a></li>
-					<li><a href="login">Login</a></li>
+					<li><a href="accounts/register">Register</a></li>
+					<li><a href="accounts/login">Login</a></li>
 				{% endif %}
 			</ul>
 		</div>
@@ -102,10 +98,13 @@
 			{% if user.is_authenticated %}
 				<div class="menu_phone ml-auto">Logged in: {{user.first_name}} {{user.last_name}}</div>
 			{% else %}
-				<div class="menu_phone ml-auto">Call us: +254703297902</div>
+				<div class="menu_phone ml-auto">Call us: +254769634078</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 				</ul>
 			{% endif %}
