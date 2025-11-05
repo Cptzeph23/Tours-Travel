@@ -133,15 +133,17 @@ USE_TZ = config('USE_TZ', default=True, cast=bool)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = config('STATIC_URL', default='/static/')
+# Static files
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    BASE_DIR / "static",
 ]
-STATIC_ROOT = config('STATIC_ROOT', default=os.path.join(BASE_DIR, 'staticfiles'))
+# Render deploy static root
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = config('MEDIA_URL', default='/media/')
-MEDIA_ROOT = config('MEDIA_ROOT', default=os.path.join(BASE_DIR, 'media'))
 
-# Optional: Configure static files storage for production
-if not DEBUG:
-    STATICFILES_STORAGE = config('STATICFILES_STORAGE', default='whitenoise.storage.CompressedManifestStaticFilesStorage')
+# MEDIA: push media into staticfiles/media (so whitenoise can serve)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "staticfiles/media"
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
