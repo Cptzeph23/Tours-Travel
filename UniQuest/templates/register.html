@@ -155,10 +155,11 @@
 
 
 
-    <!-- Footer -->
+  <!-- Footer -->
 
-	<footer class="footer">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer_1.jpg' %}" data-speed="0.8"></div>
+<section>
+    	<footer class="footer">
+		<div class="parallax_background mt-5 parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cheetah.jpg' %}" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -187,11 +188,12 @@
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
 								<div class="footer_contact_icon"><img src="{% static 'images/sign.svg' %}" alt=""></div>
-								<div class="footer_contact_title">give us a call</div>
+								<div class="footer_contact_title text-success"> <b>give us a call</b></div>
 								<div class="footer_contact_list">
 									<ul>
-										<li>Office Landline: +254703297902</li>
-										<li>Mobile: +254703297902</li>
+
+                                        <li><p class="mt-0 fs-6 text-center text-white"><b>Call US</b><strong><i class="bi bi-telephone-outbound text-primary text-center"></i> <a href="tel:+254769634078 " class="fs-6 text-primary"><b>+254769634078</b></a> </strong> <span></span></p>
+</li>
 									</ul>
 								</div>
 							</div>
@@ -201,10 +203,10 @@
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
 								<div class="footer_contact_icon"><img src="{% static 'images/trekking.svg' %}" alt=""></div>
-								<div class="footer_contact_title">come & drop by</div>
+								<div class="footer_contact_title text-success">come & drop by</div>
 								<div class="footer_contact_list">
 									<ul style="max-width:190px">
-										<li>00100, Karen Nairobi</li>
+										<li class="text-primary"><b>PO.BOX 1133-00511,Ongata Rongai</b></li>
 									</ul>
 								</div>
 							</div>
@@ -214,11 +216,11 @@
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
 								<div class="footer_contact_icon"><img src="{% static 'images/around.svg' %}" alt=""></div>
-								<div class="footer_contact_title">send us a message</div>
+								<div class="footer_contact_title text-success">send us a message</div>
 								<div class="footer_contact_list">
 									<ul>
-										<li>askzeph20@gmail.com</li>
-										<li>uniquesttravels@gmail.com</li>
+                                        <li><a href="mailto:eunicekaratu24@gmail.com" class=" fs-6"><b>eunicekaratu24@gmail.com</b></a></li>
+                                        <li><a href="mailto:uniquestadventureslimited@gmail.com " class=" fs-6"><b>uniquestadventureslimited@gmail.com</b> </a></li>
 									</ul>
 								</div>
 							</div>
@@ -229,24 +231,21 @@
 			</div>
 		</div>
 		<div style="background-color: black;" class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://instagram.com/cptzeph" target="_blank">Cptzeph</a> | Credits:<a href="https://colorlib.com/" target="_blank"> Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
-
-    </footer>
+	</footer>
 </div>
 
+</section>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
-<script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
-<script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
-<script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
-<script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
-<script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
 <script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
 <script src="{% static 'plugins/easing/easing.js' %}"></script>
 <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-<script src="{% static 'js/about.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
@@ -259,6 +258,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </script>
 
 
-
 </body>
+
 </html>
