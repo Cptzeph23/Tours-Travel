@@ -63,6 +63,9 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'accounts',
     'cloudinary',
+    "uniquest-oozx.onrender.com",
+    "www.uniquestravels.tours",
+    "uniquestravels.tours",
     #'cloudinary_storage',
 ]
 
