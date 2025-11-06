@@ -208,5 +208,10 @@ $(document).ready(function()
 	        });
 		}
 	}
+    if (window.innerWidth < 768) {
+    $('.item_grid').isotope('destroy');
+}
+
+
 	
 });

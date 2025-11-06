@@ -768,7 +768,7 @@ section
 	font-family: 'Oswald', sans-serif;
 	font-size: 12px;
 	font-weight: 400;
-	color: #72728c;
+	color: #FFFFFF;
 	line-height: 0.75;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
@@ -1183,3 +1183,27 @@ section
 {
 	margin-bottom: 7px;
 }
+
+@media (max-width: 768px) {
+    .destinations_container {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    .destinations_container .destination {
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+    }
+}
+@media (max-width:768px){
+    .destination[class*="col-"]{
+        max-width:100% !important;
+        flex:0 0 100% !important;
+    }
+}
+
+
+

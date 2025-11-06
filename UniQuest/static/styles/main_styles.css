@@ -1362,3 +1362,25 @@ section
 {
 	margin-bottom: 7px;
 }
+
+@media (max-width: 768px) {
+    .destinations_container {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    .destinations_container .destination {
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+    }
+}
+@media (max-width:768px){
+    .destination[class*="col-"]{
+        max-width:100% !important;
+        flex:0 0 100% !important;
+    }
+}
+
