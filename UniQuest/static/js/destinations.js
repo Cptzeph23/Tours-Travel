@@ -171,8 +171,12 @@ $(document).ready(function()
 
 	function initIsotope()
 	{
+         // disable isotope on phones
+        if (window.innerWidth < 768) {
+            return;
+        }
 		var sortingButtons = $('.product_sorting_btn');
-		
+
 		if($('.item_grid').length)
 		{
 			var grid = $('.item_grid').isotope({
@@ -208,10 +212,7 @@ $(document).ready(function()
 	        });
 		}
 	}
-    if (window.innerWidth < 768) {
-    $('.item_grid').isotope('destroy');
-}
 
 
-	
+
 });
