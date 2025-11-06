@@ -39,6 +39,7 @@
             max-width: 1200px;
 
             align-content: center;
+            align-items: center;
         }
 
         h1 {
@@ -53,10 +54,12 @@
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
             justify-items: center;
+            align-items: center;
+            align-content: center;
         }
 
         .destination {
-            background-color: white;
+            background-color: #f6f6fa;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(4, 29, 191, 0.08);
@@ -400,7 +403,7 @@
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
 									<div class="intro_icon"><img src="{% static 'images/custom.png' %}" alt=""></div>
 									<div class="intro_content">
-										<div class="intro_title">Custom Locations</div>
+										<div class="intro_title">Custom Destinations</div>
 										<div class="intro_subtitle"><p>Want a visit to a location of your own choosing? We got that covered. Name it and we take you there</p></div>
 									</div>
 								</div>
@@ -427,10 +430,6 @@
 								</div>
 							</div>
 
-
-
-
-
 						</div>
 					</div>
 				</div>
@@ -450,8 +449,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="section_subtitle">simply amazing places</div>
-					<div class="section_title"><h2>Popular Destinations</h2></div>
+					<div class="section_subtitle text-success"><b>simply amazing places</b></div>
+					<div class="section_title"><h2 class="text-danger"><b>Popular Destinations</b></h2></div>
 				</div>
 			</div>
 			<div class="row destination_sorting_row align-items-center text-center align-content-center">
@@ -500,12 +499,15 @@
 								<div class="destination_list">
 									<ul>
 										<li>Game Drives</li>
-										<li>Animal Orphanage</li>
-										<li>Nairobi Safari Walk</li>
+										<li>Bottle of Water</li>
 										<li>Guided visits</li>
 									</ul>
 								</div>
-                                <div class="destination_price">From $150</div>
+                               <div class="destination_price">
+	                            <span style="text-decoration: line-through; color: #9e9e9e;">Was $190</span>
+	                                <span style="color: green; font-weight:600;"><b>Now $150</b></span>
+                                </div>
+
 							</div>
 						</div>
 
@@ -526,7 +528,11 @@
 										<li>Guided visits</li>
 									</ul>
 								</div>
-                                <div class="destination_price">From $150</div>
+                                <div class="destination_price">
+	                                <span style="text-decoration: line-through; color: #9e9e9e;">Was $190</span>
+	                                <span style="color: green; font-weight:600;"><b>Now $150</b></span>
+                                </div>
+
 							</div>
 						</div>
 
@@ -547,7 +553,11 @@
 										<li>Guided visits</li>
 									</ul>
 								</div>
-                                <div class="destination_price">From $180</div>
+                                <div class="destination_price">
+	                                 <span style="text-decoration: line-through; color: #9e9e9e;">Was $220</span>
+	                                   <span style="color: green; font-weight:600;"> <b>Now $180</b></span>
+                                </div>
+
 							</div>
 						</div>
 
@@ -568,7 +578,11 @@
 										<li>Guided visits</li>
 									</ul>
 								</div>
-                                <div class="destination_price">From $200</div>
+                                <div class="destination_price">
+	                            <span style="text-decoration: line-through; color: #9e9e9e;">Was $240</span>
+	                            <span style="color: green; font-weight:600;"><b>Now $200</b></span>
+                                </div>
+
 							</div>
 						</div>
 
@@ -589,7 +603,11 @@
 										<li>Guided visits</li>
 									</ul>
 								</div>
-                                <div class="destination_price">From $250</div>
+                                <div class="destination_price">
+	                                <span style="text-decoration: line-through; color: #9e9e9e;">Was $240</span>
+	                                <span style="color: green; font-weight:600;"> <b>Now $200</b></span>
+                                </div>
+
 							</div>
 						</div>
 
@@ -610,7 +628,11 @@
 										<li>Guided visits</li>
 									</ul>
 								</div>
-                                <div class="destination_price">From $180</div>
+                                <div class="destination_price">
+                            	<span style="text-decoration: line-through; color: #9e9e9e;">Was $220</span>
+	                            <span style="color: green; font-weight:600;"> <b>Now $180</b></span>
+                                </div>
+
 							</div>
 						</div>
 
@@ -622,7 +644,8 @@
 							<div class="destination_content">
 								<div class="destination_title"><a href="#">Karen Blixen</a></div>
 								<div class="destination_subtitle"><p>Museum</p></div>
-								<div class="destination_price">From $90</div>
+
+                                </div>
 								<div class="destination_list">
 									<ul>
 										<li>Museum</li>
@@ -631,27 +654,9 @@
 										<li>Guided visits</li>
 									</ul>
 								</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/crocodile.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="#">Mamba Village</a></div>
-								<div class="destination_subtitle"><p>Conservancy</p></div>
-
-								<div class="destination_list">
-									<ul>
-										<li>Crocodiles</li>
-										<li>Trip cost inclusive</li>
-										<li>Karen Tour</li>
-										<li>Guided visits</li>
-									</ul>
-								</div>
-                                <div class="destination_price">From $100</div>
+                             <div class="destination_price">
+	                            <span style="text-decoration: line-through; color: #9e9e9e;">Was $130</span>
+	                            <span style="color: green; font-weight:600;"> <b>Now $90</b></span>
 							</div>
 						</div>
 

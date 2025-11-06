@@ -170,48 +170,51 @@ $(document).ready(function()
 	*/
 
 	function initIsotope()
-	{
-         // disable isotope on phones
-        if (window.innerWidth < 768) {
-            return;
-        }
-		var sortingButtons = $('.product_sorting_btn');
+{
+    // Enable isotope on all devices including mobile
+    if($('.item_grid').length)
+    {
+        var grid = $('.item_grid').isotope({
+            itemSelector: '.item',
+            layoutMode: 'fitRows', // Change to fitRows for better grid behavior
+            getSortData:
+            {
+                price: function(itemElement)
+                {
+                    var priceEle = $(itemElement).find('.destination_price').text().replace( 'From $', '' );
+                    return parseFloat(priceEle);
+                },
+                name: '.destination_title a'
+            },
+            animationOptions:
+            {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+        });
 
-		if($('.item_grid').length)
-		{
-			var grid = $('.item_grid').isotope({
-				itemSelector: '.item',
-	            getSortData:
-	            {
-	            	price: function(itemElement)
-	            	{
-	            		var priceEle = $(itemElement).find('.destination_price').text().replace( 'From $', '' );
-	            		return parseFloat(priceEle);
-	            	},
-	            	name: '.destination_title a'
-	            },
-	            animationOptions:
-	            {
-	                duration: 750,
-	                easing: 'linear',
-	                queue: false
-	            }
-	        });
+        // Refresh isotope on window resize to handle responsive changes
+        $(window).on('resize', function() {
+            setTimeout(function() {
+                grid.isotope('layout');
+            }, 300);
+        });
 
-	        // Sort based on the value from the sorting_type dropdown
-	        sortingButtons.each(function()
-	        {
-	        	$(this).on('click', function()
-	        	{
-	        		var parent = $(this).parent().parent().find('.sorting_text');
-		        		parent.text($(this).text());
-		        		var option = $(this).attr('data-isotope-option');
-		        		option = JSON.parse( option );
-	    				grid.isotope( option );
-	        	});
-	        });
-		}
-	}
+        // Sort based on the value from the sorting_type dropdown
+        sortingButtons.each(function()
+        {
+            $(this).on('click', function()
+            {
+                var parent = $(this).parent().parent().find('.sorting_text');
+                parent.text($(this).text());
+                var option = $(this).attr('data-isotope-option');
+                option = JSON.parse( option );
+                grid.isotope( option );
+            });
+        });
+    }
+}
 
 
 
