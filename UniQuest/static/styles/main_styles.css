@@ -1488,4 +1488,78 @@ section
     max-width: none !important;
     width: 100% !important;
 }
+/* Desktop 3 columns */
+.destinations_container .destination {
+    width: 33.3333%;
+}
+
+/* Tablets 2 columns */
+@media (max-width: 991px) {
+    .destinations_container .destination {
+        width: 50%;
+    }
+}
+
+/* Mobile 1 column */
+@media (max-width: 575px) {
+    .destinations_container .destination {
+        width: 100%;
+    }
+}
+/* Remove all conflicting Bootstrap column classes from destinations */
+.destinations_container .destination {
+    flex: none !important;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* Main grid container */
+.destinations_container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    justify-items: center !important;
+}
+
+/* Individual destination items */
+.destination {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    float: none !important;
+    display: block !important;
+}
+
+/* Tablet view - 2 columns */
+@media (max-width: 992px) {
+    .destinations_container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+}
+
+/* Mobile view - 1 column centered */
+@media (max-width: 576px) {
+    .destinations_container {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        justify-items: center !important;
+    }
+
+    .destination {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+}
+
+/* Ensure the container row doesn't interfere */
+.destinations_row .col {
+    padding: 0 !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
 
