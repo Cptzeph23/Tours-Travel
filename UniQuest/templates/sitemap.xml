@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.uniquestravels.tours/</loc>
+    <loc>https://www.uniquesttravels.tours/</loc>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.uniquestravels.tours/about</loc>
+    <loc>https://www.uniquesttravels.tours/about</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://www.uniquestravels.tours/contact</loc>
+    <loc>https://www.uniquesttravels.tours/contact</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://www.uniquestravels.tours/destinations</loc>
+    <loc>https://www.uniquesttravels.tours/destinations</loc>
     <priority>0.7</priority>
   </url>
 </urlset>
