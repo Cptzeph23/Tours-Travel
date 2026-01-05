@@ -31,3 +31,6 @@ def news(request):
 
 def destinations(request):
     return render(request, 'destinations.html')
+
+def gallery(request):
+    return render(request, 'gallery.html')
