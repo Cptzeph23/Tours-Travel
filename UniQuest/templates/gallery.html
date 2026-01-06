@@ -27,6 +27,29 @@
 
         <!--Favicon-->
   <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
+
+  <style>
+    .destination_image, .destination_video {
+        height: 650px; /* Same fixed height */
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f9fa;
+    }
+
+    .destination_image img,
+    .destination_video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Makes both images and videos fill container equally */
+    }
+
+    .destination_video video {
+        background-color: #000; /* Black background for video */
+    }
+</style>
+
 </head>
 <body>
 
@@ -127,48 +150,204 @@
 		<div class="background_image" style="background-image:url({% static 'images/girafe.jpg' %})"></div>
 	</div>
 
-<section style="mt-5 p-3 ms-5 ">
-    <h2 class="text-center align-items-center align-content-center mb-4 mt-4 text-primary">Below are some of our captured moments during our travels</h2>
+<section class="mt-5 p-3 ms-5">
+    <h2 class="text-center mb-4 mt-4 text-primary">Below are some of our captured moments during our travels</h2>
 
-    <div class="class=text-center align-items-center align-content-center mb-4 mt-4 text-primary">
-       <div class="destination item col-lg-4 intro_col mt-3">
-							<div class="destination_image ms-5 text-center align-content-center align-items-center">
-								<img src="{% static 'images/Nairobi N park.jpg' %}" alt="">
+    <div class="row text-center">
+        <!-- Image 1 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_image">
+                    <img src="{% static 'images/2lions.jpeg' %}" alt="Nairobi National Park">
+                </div>
+                <div class="destination_title">
+                    <a href="#">Nairobi National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>Two lions quenching a thirst</p>
+                </div>
+            </div>
+        </div>
 
-								<div class="destination_title"><a href="#">Nairobi National Park</a></div>
-								<div class="destination_subtitle"><p>A City that never sleeps</p></div>
-                            </div>
+        <!-- Image 2 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_image">
+                    <img src="{% static 'images/buffalo.jpeg' %}" alt="Nairobi National Park">
+                </div>
+                <div class="destination_title">
+                    <a href="#">Amboseli National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>A Rhino getting a rest</p>
+                </div>
+            </div>
+        </div>
 
+        <!-- Image 3 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_image">
+                    <img src="{% static 'images/buffalo2.jpeg' %}" alt="Nairobi National Park">
+                </div>
+                <div class="destination_title">
+                    <a href="#">Ambosseli National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>A Buffalo grazing</p>
+                </div>
+            </div>
+        </div>
 
-       </div>
-          <div class="destination item col-lg-4 intro_col mt-3">
-							<div class="destination_image ms-5 text-center align-content-center align-items-center">
-								<img src="{% static 'images/Nairobi N park.jpg' %}" alt="">
+        <!-- Image 4 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_image">
+                    <img src="{% static 'images/lions view.jpeg' %}" alt="Nairobi National Park">
+                </div>
+                <div class="destination_title">
+                    <a href="#">Nairobi National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>Tourists viewing lions</p>
+                </div>
+            </div>
+        </div>
 
-								<div class="destination_title"><a href="#">Nairobi National Park</a></div>
-								<div class="destination_subtitle"><p>A City that never sleeps</p></div>
-                            </div>
+        <!-- Video 1 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_video">
+                    <video controls>
+                        <source src="{% static 'videos/vid1.mp4' %}" type="video/mp4">
+                        <source src="{% static 'videos/vid1.webm' %}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="destination_title">
+                    <a href="#">Nairobi National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>Lions on the move</p>
+                </div>
+            </div>
+        </div>
 
+        <!-- Video 2 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_video">
+                    <video controls>
+                        <source src="{% static 'videos/vid2.mp4' %}" type="video/mp4">
+                        <source src="{% static 'videos/vid2.webm' %}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="destination_title">
+                    <a href="#">Nairobi National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>Lions hunting rhinos</p>
+                </div>
+            </div>
+        </div>
 
-       </div>
+        <!-- Video 3 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_video">
+                    <video controls>
+                        <source src="{% static 'videos/vid3.mp4' %}" type="video/mp4">
+                        <source src="{% static 'videos/vid3.webm' %}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="destination_title">
+                    <a href="#">Nairobi National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>Lions waiting by the roadside</p>
+                </div>
+            </div>
+        </div>
 
-         <div class="destination item col-lg-4 intro_col mt-3">
-							<div class="destination_image ms-5 text-center align-content-center align-items-center">
-								<img src="{% static 'images/Nairobi N park.jpg' %}" alt="">
+        <!-- Video 4 -->
+<!--        <div class="col-lg-4 mt-3">-->
+<!--            <div class="destination item">-->
+<!--                <div class="destination_video">-->
+<!--                    <video controls>-->
+<!--                        <source src="{% static 'videos/vid4.mp4' %}" type="video/mp4">-->
+<!--                        <source src="{% static 'videos/vid4.webm' %}" type="video/webm">-->
+<!--                        Your browser does not support the video tag.-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="destination_title">-->
+<!--                    <a href="#">Nairobi National Park</a>-->
+<!--                </div>-->
+<!--                <div class="destination_subtitle">-->
+<!--                    <p>A City that never sleeps</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-								<div class="destination_title"><a href="#">Nairobi National Park</a></div>
-								<div class="destination_subtitle"><p>A City that never sleeps</p></div>
-                            </div>
+        <!-- Video 5 -->
+<!--        <div class="col-lg-4 mt-3">-->
+<!--            <div class="destination item">-->
+<!--                <div class="destination_video">-->
+<!--                    <video controls>-->
+<!--                        <source src="{% static 'videos/vid5.mp4' %}" type="video/mp4">-->
+<!--                        <source src="{% static 'videos/vid5.webm' %}" type="video/webm">-->
+<!--                        Your browser does not support the video tag.-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="destination_title">-->
+<!--                    <a href="#">Nairobi National Park</a>-->
+<!--                </div>-->
+<!--                <div class="destination_subtitle">-->
+<!--                    <p>A City that never sleeps</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
+        <!-- Video 6 -->
+        <div class="col-lg-4 mt-3">
+            <div class="destination item">
+                <div class="destination_video">
+                    <video controls>
+                        <source src="{% static 'videos/vid6.mp4' %}" type="video/mp4">
+                        <source src="{% static 'videos/vid6.webm' %}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="destination_title">
+                    <a href="#">Nairobi National Park</a>
+                </div>
+                <div class="destination_subtitle">
+                    <p>Buffaloes cooling in the mud</p>
+                </div>
+            </div>
+        </div>
 
-       </div>
-
+<!--        &lt;!&ndash; Video 7 &ndash;&gt;-->
+<!--        <div class="col-lg-4 mt-3">-->
+<!--            <div class="destination item">-->
+<!--                <div class="destination_video">-->
+<!--                    <video controls>-->
+<!--                        <source src="{% static 'videos/vid7.mp4' %}" type="video/mp4">-->
+<!--                        <source src="{% static 'videos/vid7.webm' %}" type="video/webm">-->
+<!--                        Your browser does not support the video tag.-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="destination_title">-->
+<!--                    <a href="#">Nairobi National Park</a>-->
+<!--                </div>-->
+<!--                <div class="destination_subtitle">-->
+<!--                    <p>A City that never sleeps</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </section>
-
-
-
-
-
 
 
 
