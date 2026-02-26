@@ -1,0 +1,972 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>UniQuest</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travello template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+          <!-- SEO Meta Tags -->
+    <meta name="description" content="uniquest travels – where adventure meets authenticity.">
+  <meta name="keywords" content="uniquest,  travels, tours, uniquest tours, uniquest travels">
+  <meta name="author" content="travels and tours, Uniquest Tours">
+  <meta name="robots" content="index, follow">
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+
+    <!--Favicon-->
+  <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
+
+
+   <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            padding: 30px;
+            color: #252525;
+        }
+
+        .container {
+            max-width: 1200px;
+
+            align-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c5530;
+            font-size: 2.5rem;
+        }
+
+        .destinations_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            align-items: center;
+            align-content: center;
+        }
+
+        .destination {
+            background-color: #f6f6fa;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(4, 29, 191, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .destination:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .destination_image {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .destination_image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .destination_content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .destination_title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c5530;
+        }
+
+        .destination_subtitle {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .destination_price {
+            color: #6ca607;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px dashed #eee;
+        }
+
+        .spazi {
+            background-color: transparent;
+            box-shadow: none;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .destinations_container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .destinations_container {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 15px;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
+								<div class="logo text-danger"><a href="/" class="text-danger "><b>UniQuest Travels</b></a></div>
+								<nav class="main_nav text-light ml-auto">
+									<ul class="d-flex flex-row align-items-start justify-content-start text-light">
+										<li class="active"><a href="/" class="text-warning"><b>Home</b></a></li>
+										<li><a href="/about/" class="text-warning"><b>About Us</b></a></li>
+										<li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
+										<li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
+									    <li><a href="/gallery/" class="text-warning"><b>Gallery</b></a></li>
+                                    </ul>
+								</nav>
+							{% if user.is_authenticated %}
+								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
+							{% else %}
+								<div class="header_phone ml-auto">
+
+										<i class="fa fa-instagram" aria-hidden="false"></i>
+									</a>
+								</div>
+							{% endif %}
+
+							<!-- Hamburger -->
+
+							<div class="hamburger ml-auto">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header_social d-flex flex-row align-items-center justify-content-start">
+			<ul class="d-flex flex-row align-items-start justify-content-start">
+				<li><a href="https://www.facebook.com/profile.php?id=61583113811233" target="_blank"><i class="fa fa-facebook text-primary" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/uniquestadventure?igsh=OGN2Y3M2Zzh3dnAw" target="_blank"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="https://wa.me/+254769634078" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
+			</ul>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu">
+		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
+			<div class="menu_logo text-danger"><a href="" class="text-danger">UniQuest Travels</a></div>
+			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
+		</div>
+		<div class="menu_content">
+			<ul>
+				<li class="active "><a href="" class="text-warning">Home</a></li>
+				<li><a href="/about/" class="text-warning">About Us</a></li>
+
+				<li><a href="/contact/" class="text-warning">Contact</a></li>
+                <li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
+                <li><a href="/gallery/" class="text-warning"><b>Gallery</b></a></li>
+
+
+				{% if user.is_authenticated %}
+					<li><a href="accounts/logout"></a></li>
+				{% else %}
+					<li><a href="accounts/register"></a></li>
+					<li><a href="accounts/login"></a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="menu_social">
+			{% if user.is_authenticated %}
+				<div class="menu_phone ml-auto">Logged in: {{user.first_name}} {{user.last_name}}</div>
+			{% else %}
+				<div class="menu_phone ml-auto text-success">Call us: +254769634078</div>
+				<ul class="d-flex flex-row align-items-start justify-content-start">
+					<li><a href="https://www.facebook.com/profile.php?id=61583113811233" target="_blank"><i class="fa fa-facebook text-primary" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/uniquestadventure?igsh=OGN2Y3M2Zzh3dnAw" target="_blank"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="https://wa.me/+254769634078" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+	
+	<!-- Home -->
+<section class="text-light">
+
+    <div class="home">
+
+		<!-- Home Slider -->
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<div class="background_image" style="background-image:url({% static 'images/nrb2.jpg' %})"></div>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2 class="text-info p-3">Where Adventure Meets Authenticity</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<div class="background_image" style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Let us take you places</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<div class="background_image" style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Explore Kenya</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Search -->
+
+{#	<div class="home_search">#}
+{#		<div class="container">#}
+{#			<div class="row">#}
+{#				<div class="col">#}
+{#					<div class="home_search_container">#}
+{#						<div class="home_search_title">Search for your trip</div>#}
+{#						<div class="home_search_content">#}
+{#							<form action="#" class="home_search_form" id="home_search_form">#}
+{#								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">#}
+{#									<input type="text" class="search_input search_input_1" placeholder="City" required="required">#}
+{#									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">#}
+{#									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">#}
+{#									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">#}
+{#									<button class="home_search_button">search</button>#}
+{#								</div>#}
+{#							</form>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
+
+	<!-- Intro -->
+
+	<div class="intro">
+		<div class="intro_background" style="background-image:url({% static 'images/intro.png' %})"></div>
+		<div class="container">
+
+			<div class="row">
+				<div class="col">
+					<div class="intro_container">
+                        <div class="text-center align-items-center align-content-center">
+                          <h2 class="text-info justify-content-center mb-5 align-content-center align-items-center"><u>What we offer...!</u></h2>
+                         </div>
+						<div class="row">
+
+							<!-- Intro Item -->
+							<div class="col-lg-4 intro_col">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/top destination.png' %}" alt="" class="text-info"></div>
+									<div class="intro_content">
+										<div class="intro_title">Top Destinations</div>
+										<div class="intro_subtitle"><p>We give you the most adventurous destinations to explore</p></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Intro Item -->
+
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/missionary tours.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">Missionary Tours</div>
+										<div class="intro_subtitle"><p>We facilitate Missionary tourism whether visiting for mission work and want some vacation during the period</p></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Intro Item -->
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/hiking tours.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">Hiking Tours</div>
+										<div class="intro_subtitle"><p>We offer Hiking activities of most serene but secure places</p></div>
+									</div>
+								</div>
+							</div>
+
+                            <!-- Intro Item -->
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/cultural tours.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">Cultural Tours</div>
+										<div class="intro_subtitle"><p>Kenya being a diverse and rich in various cultures, we facilitate tours to different ethnicities and culture</p></div>
+									</div>
+								</div>
+							</div>
+
+                            <!-- Intro Item -->
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/wildlife tours.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">Wildlife Tours</div>
+										<div class="intro_subtitle"><p>We facilitate visits o various game parks, game reserves and wildlife conservancies</p></div>
+									</div>
+								</div>
+							</div>
+
+                             <!-- Intro Item -->
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/custom.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">Custom Destinations</div>
+										<div class="intro_subtitle"><p>Want a visit to a location of your own choosing? We got that covered. Name it and we take you there</p></div>
+									</div>
+								</div>
+							</div>
+
+                               <!-- Intro Item -->
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/time.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">24/7 Service Delivery</div>
+										<div class="intro_subtitle"><p>Our team is available at your service at any time of the day, email, call or chat and you get a response immediately</p></div>
+									</div>
+								</div>
+							</div>
+                               <!-- Intro Item -->
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/cash back.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">Guaranteed Refund</div>
+										<div class="intro_subtitle"><p>Booked and your schedule changed? Don't worry we offer 100% money back with 24 hours notice period</p></div>
+									</div>
+								</div>
+							</div>
+                              <!-- Intro Item -->
+							<div class="col-lg-4 intro_col mt-3">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><img src="{% static 'images/best-price.png' %}" alt=""></div>
+									<div class="intro_content">
+										<div class="intro_title">Best Prices</div>
+										<div class="intro_subtitle"><p>Our prices are pocket friendly with affordable trips across destinations</p></div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</section>
+
+	<!-- Destinations -->
+
+	<section class="align-center align-items-center ">
+        <div class="destinations text-center align-content-center" id="destinations">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_subtitle text-success"><b>simply amazing places</b></div>
+					<div class="section_title"><h2 class="text-danger"><b>Popular Destinations</b></h2></div>
+				</div>
+			</div>
+			<div class="row destination_sorting_row align-items-center text-center align-content-center">
+				<div class="col">
+					<div class="destination_sorting d-flex flex-row align-items-center justify-content-center">
+						<div class="sorting">
+{#							<ul class="item_sorting">#}
+{#								<li>#}
+{#									<span class="sorting_text">Sort By</span>#}
+{#									<i class="fa fa-chevron-down" aria-hidden="true"></i>#}
+{#									<ul>#}
+{#										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Show All</span></li>#}
+{#										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>#}
+{#										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Name</span></li>#}
+{#									</ul>#}
+{#								</li>#}
+{#								<li>#}
+{#									<span class="sorting_text">Categories</span>#}
+{#									<i class="fa fa-chevron-down" aria-hidden="true"></i>#}
+{#									<ul>#}
+{#										<li class="num_sorting_btn"><span>Category</span></li>#}
+{#										<li class="num_sorting_btn"><span>Category</span></li>#}
+{#										<li class="num_sorting_btn"><span>Category</span></li>#}
+{#									</ul>#}
+{#								</li>#}
+{#							</ul>#}
+						</div>
+						<div class="sort_box ml-auto"><i class="fa fa-th" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="row destinations_row">
+				<div class="col">
+					<div class="destinations_container item_grid">
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<img src="{% static 'images/Nairobi N park.jpg' %}" alt="">
+								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="#">Nairobi National Park</a></div>
+								<div class="destination_subtitle"><p>A City that never sleeps</p></div>
+
+								<div class="destination_list">
+									<ul>
+                                        <li>National Park</li>
+										<li>Game Drives</li>
+										<li>Bottle of Water</li>
+										<li>Guided visits</li>
+									</ul>
+								</div>
+                               <div class="destination_price">
+	                            <span style="text-decoration: line-through; color: #9e9e9e;">Was $190</span>
+	                                <span style="color: green; font-weight:600;"><b>Now $150</b></span>
+                                </div>
+
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<img src="{% static 'images/Lake Nakuru 1.jpg' %}" alt="">
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="#">Lake Nakuru</a></div>
+								<div class="destination_subtitle"><p>Heaven on Earth</p></div>
+
+								<div class="destination_list">
+									<ul>
+										<li>Flamingos</li>
+										<li>Rift Valley Lake</li>
+										<li>National Park</li>
+										<li>Guided visits</li>
+									</ul>
+								</div>
+                                <div class="destination_price">
+	                                <span style="text-decoration: line-through; color: #9e9e9e;">Was $350</span>
+	                                <span style="color: green; font-weight:600;"><b>Now $300</b></span>
+                                </div>
+
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<img src="{% static 'images/David Sheldrick 1.jpg' %}" alt="">
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="#">David Sheldrick</a></div>
+								<div class="destination_subtitle"><p>Animal Orphanage</p></div>
+
+								<div class="destination_list">
+									<ul>
+										<li>Elephant Orphanage</li>
+										<li>Travel expenses</li>
+                                        <li>Rhino orphanage</li>
+                                        <li>Guided visits</li>
+									</ul>
+								</div>
+                                <div class="destination_price">
+	                                 <span style="text-decoration: line-through; color: #9e9e9e;">Was $220</span>
+	                                   <span style="color: green; font-weight:600;"> <b>Now $180</b></span>
+                                </div>
+
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<img src="{% static 'images/naivasha.jpg' %}" alt="">
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="#">Lake Naivasha</a></div>
+								<div class="destination_subtitle"><p>Rift Valley</p></div>
+
+								<div class="destination_list">
+									<ul>
+										<li>Hell's Gate National Park</li>
+										<li>Crescent Island</li>
+										<li>Boat Rides</li>
+										<li>Guided visits</li>
+									</ul>
+								</div>
+                                <div class="destination_price">
+	                            <span style="text-decoration: line-through; color: #9e9e9e;">Was $240</span>
+	                            <span style="color: green; font-weight:600;"><b>Now $200</b></span>
+                                </div>
+
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<img src="{% static 'images/Ambosseli National park.jpg' %}" alt="">
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="#">Amboseli National Park</a></div>
+								<div class="destination_subtitle"><p>Game drive</p></div>
+
+								<div class="destination_list">
+									<ul>
+										<li>Scenic Game experience</li>
+										<li>Game Drive</li>
+										<li>Park experience</li>
+										<li>Guided visits</li>
+									</ul>
+								</div>
+                                <div class="destination_price">
+	                                <span style="text-decoration: line-through; color: #9e9e9e;">Was $240</span>
+	                                <span style="color: green; font-weight:600;"> <b>Now $200</b></span>
+                                </div>
+
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<img src="{% static 'images/Giraffe Centre.jpg' %}" alt="">
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="#">Giraffe Centre</a></div>
+								<div class="destination_subtitle"><p>Conservancy</p></div>
+
+								<div class="destination_list">
+									<ul>
+										<li>Giraffe feeding</li>
+										<li>physical interaction with the animal</li>
+										<li>Transport covered</li>
+										<li>Guided visits</li>
+									</ul>
+								</div>
+                                <div class="destination_price">
+                            	<span style="text-decoration: line-through; color: #9e9e9e;">Was $220</span>
+	                            <span style="color: green; font-weight:600;"> <b>Now $180</b></span>
+                                </div>
+
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<img src="{% static 'images/Blixen.jpg' %}" alt="">
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="#">Karen Blixen</a></div>
+								<div class="destination_subtitle"><p>Museum</p></div>
+
+                                </div>
+								<div class="destination_list">
+									<ul>
+										<li>Museum</li>
+										<li>Cultural artefacts</li>
+										<li>% star Restaurant</li>
+										<li>Guided visits</li>
+									</ul>
+								</div>
+                             <div class="destination_price">
+	                            <span style="text-decoration: line-through; color: #9e9e9e;">Was $130</span>
+	                            <span style="color: green; font-weight:600;"> <b>Now $90</b></span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="row load_more_row">
+
+			</div>
+		</div>
+	</div>
+
+
+    </section>
+
+<section class="text-center text-light">
+    <div>
+        <h2 class="text-success">Book Now On WhatsApp!</h2>
+        <p>For Quick service, reach out to us on WhatsApp</p>
+        <p>Send us your name, desired destination and date of visit</p> <br>
+        <div><button style="background-color: #032042;" class="newsletter_button btn-warning"><a href="https://wa.me/+254769634078" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i> <b>Chat on Whatsapp</b></a></button></div>
+
+    </div>
+</section>
+
+	<!-- Testimonials -->
+
+	<div class="testimonials mb-5 mt-5" id="testimonials" >
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/nrb.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_subtitle text-success">simply amazing places</div>
+					<div class="section_title"><h2 class="text_highlight">Testimonials</h2></div>
+				</div>
+			</div>
+			<div class="row testimonials_row">
+				<div class="col">
+
+					<!-- Testimonials Slider -->
+					<div class="testimonials_slider_container">
+						<div class="owl-carousel owl-theme testimonials_slider">
+							
+							<!-- Slide -->
+							<div class="owl-item text-center">
+								<div class="testimonial text-primary">When I first landed in Kenya, UniQuest Travels were there to help me navigate around. For sure, my trip was worth it. Thank you.</div>
+								<div class="testimonial_author">
+									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+										<div class="text-success">john turner,</div>
+										<div>client</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide -->
+							<div class="owl-item text-center">
+								<div class="testimonial text-warning">Services are delivered as per your liking. Your work remains to enjoy</div>
+								<div class="testimonial_author">
+									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+										<div class="text-success">Silvia Michaelson</div>
+										<div>client</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide -->
+							<div class="owl-item text-center">
+								<div class="testimonial">A very reliable agency, Good work and keep it up</div>
+								<div class="testimonial_author">
+									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+										<div>Steve Seagull</div>
+										<div>client</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+<section class="text-light">
+
+</section>
+
+{#	<!-- News -->#}
+{##}
+{#	<div class="news" id="news">#}
+{#		<div class="container">#}
+{#			<div class="row">#}
+{#				<div class="col-xl-8">#}
+{#					<div class="news_container">#}
+{#						#}
+{#						<!-- News Post -->#}
+{#						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">#}
+{#							<div class="news_post_image"><img src="{% static 'images/Maasai Mara National reserve.jpg' %}" alt=""></div>#}
+{#							<div class="news_post_content">#}
+{#								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">#}
+{#									<div class="text-success">02</div>#}
+{#									<div class="text-success">june</div>#}
+{#								</div>#}
+{#								<div class="news_post_title"><a href="#">From Game Parks...</a></div>#}
+{#								<div class="news_post_category">#}
+{#									<ul>#}
+{#										<li><a href="#" class="text-info">lifestyle & travel</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#								<div class="news_post_text">#}
+{#									<p>Enjoy The famous Maasai Mara national reserve, the wildbeast migrations and many more.</p>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{#						<!-- News Post -->#}
+{#						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">#}
+{#							<div class="news_post_image"><img src="{% static 'images/Giraffe C.jpg' %}" alt=""></div>#}
+{#							<div class="news_post_content">#}
+{#								<div class="news_post_date  d-flex flex-row align-items-end justify-content-start">#}
+{#									<div class="text-success">01</div>#}
+{#									<div class="text-success">june</div>#}
+{#								</div>#}
+{#								<div class="news_post_title"><a href="#">To Orphanages</a></div>#}
+{#								<div class="news_post_category">#}
+{#									<ul>#}
+{#										<li><a href="#">lifestyle & travel</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#								<div class="news_post_text">#}
+{#									<p>From the reserves such as Giraffe centre to exemplary restuarants like the Karen Blixen</p>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{#						<!-- News Post -->#}
+{#						<div class="news_post d-flex flex-md-row flex-column align-items-center justify-content-center">#}
+{#							<div class="news_post_image"><img src="{% static 'images/Rift Valley.jpg' %}" alt=""></div>#}
+{#							<div class="news_post_content">#}
+{#								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">#}
+{#									<div class="text-success">29</div>#}
+{#									<div class="text-success">may</div>#}
+{#								</div>#}
+{#								<div class="news_post_title"><a href="#">And National Reserves</a></div>#}
+{#								<div class="news_post_category">#}
+{#									<ul>#}
+{#										<li><a href="#">lifestyle & travel</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#								<div class="news_post_text">#}
+{#									<p>Venture into the wonders of the Great Rift Valley .</p>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{#					</div>#}
+{#				</div>#}
+{##}
+{#				<!-- News Sidebar -->#}
+{#				<div class="col-xl-4">#}
+{#					<div class="travello">#}
+{#						<div class="background_image" style="background-image:url({% static 'images/nrb.jpg' %})"></div>#}
+{#						<div class="travello_content">#}
+{#							<div class="travello_content_inner">#}
+{#								<div></div>#}
+{#								<div></div>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="travello_container">#}
+{#							<a href="#">#}
+{#								<div class="d-flex flex-column align-items-center justify-content-end">#}
+{#									<span class="travello_title">Get a 20% Discount</span>#}
+{#									<span class="travello_subtitle">Book Vacation Online Now</span>#}
+{#								</div>#}
+{#							</a>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
+
+	<!-- Footer -->
+
+<section>
+    	<footer class="footer">
+		<div class="parallax_background mt-5 parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cheetah.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="newsletter">
+						<div class="newsletter_title_container text-center">
+							<div class="newsletter_title">Subscribe to our newsletter to get the latest trends & news</div>
+							<div class="newsletter_subtitle">Join our database NOW!</div>
+						</div>
+						<div class="newsletter_form_container">
+							<form action="#" class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between" id="newsletter_form">
+								<div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
+									<div><input type="text" class="newsletter_input newsletter_input_name" id="newsletter_input_name" placeholder="Name" required="required"><div class="input_border"></div></div>
+									<div><input type="email" class="newsletter_input newsletter_input_email" id="newsletter_input_email" placeholder="Your e-mail" required="required"><div class="input_border"></div></div>
+								</div>
+								<div><button style="background-color: brown;" class="newsletter_button">subscribe</button></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row footer_contact_row">
+				<div class="col-xl-10 offset-xl-1">
+					<div class="row">
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><img src="{% static 'images/sign.svg' %}" alt=""></div>
+								<div class="footer_contact_title text-success"> <b>give us a call</b></div>
+								<div class="footer_contact_list">
+									<ul>
+
+                                        <li><p class="mt-0 fs-6 text-center text-white"><b>Call US</b><strong><i class="bi bi-telephone-outbound text-primary text-center"></i> <a href="tel:+254769634078 " class="fs-6 text-primary"><b>+254769634078</b></a> </strong> <span></span></p>
+</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><img src="{% static 'images/trekking.svg' %}" alt=""></div>
+								<div class="footer_contact_title text-success"><b>come & drop by</b></div>
+								<div class="footer_contact_list">
+									<ul style="max-width:190px">
+										<li class="text-primary"><b>PO.BOX 1133-00511,Ongata Rongai</b></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><img src="{% static 'images/around.svg' %}" alt=""></div>
+								<div class="footer_contact_title text-success"><b>send us a message</b></div>
+								<div class="footer_contact_list">
+									<ul>
+                                        <li><a href="mailto:eunicekaratu24@gmail.com" class=" fs-6"><b>eunicekaratu24@gmail.com</b></a></li>
+                                        <li><a href="mailto:uniquestadventureslimited@gmail.com " class=" fs-6"><b>uniquestadventureslimited@gmail.com</b> </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="background-color: black;" class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
+	</footer>
+</div>
+
+</section>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+
+</body>
+
+</html>

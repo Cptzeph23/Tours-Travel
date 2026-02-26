@@ -1,0 +1,17 @@
+# Environment variables
+.env
+/travel/.env
+
+# Django artifacts
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+
+# IDE and OS files
+.idea/
+*.swp
+*.swo
+*~
+.travel

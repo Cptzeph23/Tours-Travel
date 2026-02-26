@@ -1,0 +1,485 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>About us</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travello template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- SEO Meta Tags -->
+    <meta name="description" content="uniquest travels – where adventure meets authenticity.">
+  <meta name="keywords" content="uniquest,  travels, tours, uniquest tours, uniquest travels">
+  <meta name="author" content="travels and tours, Uniquest Tours">
+  <meta name="robots" content="index, follow">
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/about.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css' %}">
+
+        <!--Favicon-->
+  <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
+</head>
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
+								<div class="logo text-danger"><a href="/" class="text-danger "><b>UniQuest Travels</b></a></div>
+								<nav class="main_nav text-light ml-auto">
+									<ul class="d-flex flex-row align-items-start justify-content-start text-light">
+										<li><a href="/" class="text-warning"><b>Home</b></a></li>
+										<li class="active"><a href="/about/" class="text-warning"><b>About Us</b></a></li>
+										<li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
+										<li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
+                                        <li><a href="/gallery/" class="text-warning"><b>Gallery</b></a></li>
+									</ul>
+								</nav>
+							{% if user.is_authenticated %}
+								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
+							{% else %}
+								<div class="header_phone ml-auto">
+
+										<i class="fa fa-instagram" aria-hidden="false"></i>
+									</a>
+								</div>
+							{% endif %}
+
+							<!-- Hamburger -->
+
+							<div class="hamburger ml-auto">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header_social d-flex flex-row align-items-center justify-content-start">
+			<ul class="d-flex flex-row align-items-start justify-content-start">
+				<li><a href="https://www.facebook.com/profile.php?id=61583113811233" target="_blank"><i class="fa fa-facebook text-primary" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/uniquestadventure?igsh=OGN2Y3M2Zzh3dnAw" target="_blank"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="https://wa.me/+254769634078" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
+			</ul>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu">
+		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
+			<div class="menu_logo text-danger"><a href="" class="text-danger">UniQuest Travels</a></div>
+			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
+		</div>
+		<div class="menu_content">
+			<ul>
+				<li class="active"><a href="" class="text-warning">Home</a></li>
+				<li><a href="/about/" class="text-warning">About Us</a></li>
+
+				<li><a href="/contact/" class="text-warning">Contact</a></li>
+                <li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
+                <li><a href="/gallery/" class="text-warning"><b>Gallery</b></a></li>
+
+				{% if user.is_authenticated %}
+					<li><a href="accounts/logout">Logout</a></li>
+				{% else %}
+					<li><a href="accounts/register"></a></li>
+					<li><a href="accounts/login"></a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="menu_social">
+			{% if user.is_authenticated %}
+				<div class="menu_phone ml-auto">Logged in: {{user.first_name}} {{user.last_name}}</div>
+			{% else %}
+				<div class="menu_phone text-success ml-auto" >Call us: +254769634078</div>
+				<ul class="d-flex flex-row align-items-start justify-content-start">
+					<li><a href="https://www.facebook.com/profile.php?id=61583113811233" target="_blank"><i class="fa fa-facebook text-primary" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/uniquestadventure?igsh=OGN2Y3M2Zzh3dnAw" target="_blank"><i class="fa fa-instagram text-danger" aria-hidden="true"></i></a></li>
+				<li><a href="https://wa.me/+254769634078" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a></li>
+
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="background_image" style="background-image:url({% static 'images/girafe.jpg' %})"></div>
+	</div>
+
+	<!-- mission & vision -->
+
+	<div class="home_search">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_search_container">
+						<div class="home_search_title"><h3>Uniquest travels</h3></div>
+						<div class="home_search_content">
+
+                     <section>
+                         <div>
+                             <h2>Mission</h2>
+                             <p>To make every journey a story worth telling through personalized, responsible, and unforgettable adventures."
+                                </p>
+
+                             <h2>Vision</h2>
+                             <p>To be a leading tour company recognized for delivering authentic, innovative, and sustainable travel experiences across Kenya and beyond</p>
+                         </div>
+                     </section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- About -->
+
+	<div class="about">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_subtitle">simply amazing places</div>
+					<div class="section_title"><h2>Who Are We?</h2></div>
+				</div>
+			</div>
+			<div class="row about_row">
+				<div class="col-lg-6">
+					<div class="about_content">
+						<div class="text_highlight">We are a Travel agency. Helping you tour around Kenya.</div>
+						<div class="about_text">
+							<p>UniQuest was born from the dream of a young girl
+                                who believed the world was full of untold stories waiting to be discovered.
+                                That dream grew into a passion
+                                — to connect people, culture, and nature through meaningful travel experiences. <br>
+
+                                    At UniQuest, we don’t just plan tours; we curate journeys that leave footprints on both
+                                hearts and horizons. Every trip is designed to celebrate authenticity — blending adventure,
+                                culture, and comfort in perfect harmony. <br>
+
+                                        We believe travel should not only show you new places but also help you feel them — their rhythm, their people, and their hidden beauty.</p>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="about_image"><img src="{% static 'images/elephant 1.jpg' %}" alt=""></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Milestones -->
+
+	<div class="milestones">
+		<div class="container">
+			<div class="row">
+				
+				<!-- Milestone -->
+				<div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="{% static 'images/destinations.png' %}" alt=""></div>
+						<div class="milestone_counter" data-end-value="100+">100+</div>
+						<div class="milestone_text">Destinations</div>
+					</div>
+				</div>
+
+				<!-- Milestone -->
+				<div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="{% static 'images/events.png' %}" alt=""></div>
+						<div class="milestone_counter" data-end-value="50+">50+</div>
+						<div class="milestone_text">Events</div>
+					</div>
+				</div>
+
+				<!-- Milestone -->
+				<div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="{% static 'images/tour guide.png' %}" alt=""></div>
+						<div class="milestone_counter" data-end-value="20">20</div>
+						<div class="milestone_text">Guides</div>
+					</div>
+				</div>
+
+				<!-- Milestone -->
+				<div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="{% static 'images/bus.png' %}" alt=""></div>
+						<div class="milestone_counter" data-end-value="15">15</div>
+						<div class="milestone_text">Vehicles</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Why Choose Us -->
+
+	<div class="why">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/nrb3.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_subtitle text-danger">simply amazing places</div>
+					<div class="section_title"><h2 class="text-warning">Why choose us?</h2></div>
+				</div>
+			</div>
+			<div class="row why_row">
+				
+				<!-- Why item -->
+				<div class="col-lg-4 why_col">
+					<div class="why_item">
+						<div class="why_image">
+							<img src="{% static 'images/girafe.jpg' %}" alt="">
+							<div class="why_icon d-flex flex-column align-items-center justify-content-center">
+								<img src="{% static 'images/why_1.svg' %}" alt="">
+							</div>
+						</div>
+						<div class="why_content text-center">
+							<div class="why_title">Fast Services</div>
+							<div class="why_text">
+								<p>At your service when you need us. Time is always part of our services ensuring you don't get bored.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Why item -->
+				<div class="col-lg-4 why_col">
+					<div class="why_item">
+						<div class="why_image">
+							<img src="{% static 'images/why_2.jpg' %}" alt="">
+							<div class="why_icon d-flex flex-column align-items-center justify-content-center">
+								<img src="{% static 'images/cam.jpg' %}" alt="">
+							</div>
+						</div>
+						<div class="why_content text-center">
+							<div class="why_title">Great Team</div>
+							<div class="why_text">
+								<p>Our team of experts and high experience makes sure you are getting exactly what you came for.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Why item -->
+				<div class="col-lg-4 why_col">
+					<div class="why_item">
+						<div class="why_image">
+							<img src="{% static 'images/lion.jpg' %}" alt="" class="text-center">
+							<div class="why_icon d-flex flex-column align-items-center justify-content-center">
+								<img src="{% static 'images/img.png' %}" alt="">
+							</div>
+						</div>
+						<div class="why_content text-center">
+							<div class="why_title">Best Deals</div>
+							<div class="why_text">
+								<p>Our prices are standardized as well as huge discounts for first timers.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Team -->
+
+	<div class="team">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_subtitle">simply amazing places</div>
+					<div class="section_title"><h2>Meet the Team</h2></div>
+				</div>
+			</div>
+			<div class="">
+				
+				<!-- Team Item -->
+				<div class="d-flex align-content-center align-items-center justify-content-center">
+                 <div class="team_item d-flex flex-column align-items-center justify-content-center text-center">
+                   <div class="team_image mt-5">
+                      <img src="{% static 'images/Eunice.jpeg' %}" alt="">
+                  </div>
+                         <div class="team_content">
+                        <div class="team_title"><a href="mailto:eunicekaratu24@gmail.com"><b>Eunice Karatu</b></a></div>
+                           <div class="team_text">
+                             <h3>CEO and Founder</h3>
+                            </div>
+                        </div>
+                  </div>
+                </div>
+
+
+				<!-- Team Item -->
+{#				<div class="col-xl-3 col-md-6 team_col">#}
+{#					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">#}
+{#						<div class="team_image"><img src="{% static 'images/team_2.jpg' %}" alt=""></div>#}
+{#						<div class="team_content">#}
+{#							<div class="team_title"><a href="#">James Williams</a></div>#}
+{#							<div class="team_text">#}
+{#								<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+
+				<!-- Team Item -->
+{#				<div class="col-xl-3 col-md-6 team_col">#}
+{#					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">#}
+{#						<div class="team_image"><img src="{% static 'images/team_3.jpg' %}" alt=""></div>#}
+{#						<div class="team_content">#}
+{#							<div class="team_title"><a href="#">Michael James</a></div>#}
+{#							<div class="team_text">#}
+{#								<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+
+				<!-- Team Item -->
+{#				<div class="col-xl-3 col-md-6 team_col">#}
+{#					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">#}
+{#						<div class="team_image"><img src="{% static 'images/team_4.jpg' %}" alt=""></div>#}
+{#						<div class="team_content">#}
+{#							<div class="team_title"><a href="#">Noah Smith</a></div>#}
+{#							<div class="team_text">#}
+{#								<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+
+<section>
+    	<footer class="footer">
+		<div class="parallax_background mt-5 parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cheetah.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="newsletter">
+						<div class="newsletter_title_container text-center">
+							<div class="newsletter_title">Subscribe to our newsletter to get the latest trends & news</div>
+							<div class="newsletter_subtitle">Join our database NOW!</div>
+						</div>
+						<div class="newsletter_form_container">
+							<form action="#" class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between" id="newsletter_form">
+								<div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
+									<div><input type="text" class="newsletter_input newsletter_input_name" id="newsletter_input_name" placeholder="Name" required="required"><div class="input_border"></div></div>
+									<div><input type="email" class="newsletter_input newsletter_input_email" id="newsletter_input_email" placeholder="Your e-mail" required="required"><div class="input_border"></div></div>
+								</div>
+								<div><button style="background-color: brown;" class="newsletter_button">subscribe</button></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row footer_contact_row">
+				<div class="col-xl-10 offset-xl-1">
+					<div class="row">
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><img src="{% static 'images/sign.svg' %}" alt=""></div>
+								<div class="footer_contact_title text-success"> <b>give us a call</b></div>
+								<div class="footer_contact_list">
+									<ul>
+
+                                        <li><p class="mt-0 fs-6 text-center text-white"><b>Call US</b><strong><i class="bi bi-telephone-outbound text-primary text-center"></i> <a href="tel:+254769634078 " class="fs-6 text-primary"><b>+254769634078</b></a> </strong> <span></span></p>
+</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><img src="{% static 'images/trekking.svg' %}" alt=""></div>
+								<div class="footer_contact_title text-success"><b>come & drop by</b></div>
+								<div class="footer_contact_list">
+									<ul style="max-width:190px">
+										<li class="text-primary"><b>PO.BOX 1133-00511,Ongata Rongai</b></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><img src="{% static 'images/around.svg' %}" alt=""></div>
+								<div class="footer_contact_title text-success"><b>send us a message</b></div>
+								<div class="footer_contact_list">
+									<ul>
+                                        <li><a href="mailto:eunicekaratu24@gmail.com" class=" fs-6"><b>eunicekaratu24@gmail.com</b></a></li>
+                                        <li><a href="mailto:uniquestadventureslimited@gmail.com " class=" fs-6"><b>uniquestadventureslimited@gmail.com</b> </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="background-color: black;" class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
+	</footer>
+</div>
+
+</section>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+
+</body>
+
+</html>
