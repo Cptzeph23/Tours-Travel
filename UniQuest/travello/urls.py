@@ -19,7 +19,7 @@ urlpatterns = [
     path('davidSheldrick/', views.davidSheldrick, name='davidSheldrick'),
     path('giraffeCenter/', views.giraffeCenter, name='giraffeCenter'),
     path('nairobiPark/', views.nairobiNationalPark, name='nairobiPark'),
-    path('karenBlixenMuseum/', views.karenBlixenMuseum, name='karenBlixenMuseum'),
+    path('karenBlixen/', views.karenBlixen, name='karenBlixen'),
     path('nairobiTour/', views.nairobiCityTour, name='nairobiTour'),
 
     

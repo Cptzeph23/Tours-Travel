@@ -56,8 +56,8 @@ def giraffeCenter(request):
 def nairobiNationalPark(request):
     return render(request, 'nairobiPark.html')
 
-def karenBlixenMuseum(request):
-    return render(request, 'karenBlixenMuseum.html')
+def karenBlixen(request):
+    return render(request, 'karenBlixen.html')
 
 def nairobiCityTour(request):
     return render(request, 'nairobiTour.html')
