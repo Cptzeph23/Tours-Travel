@@ -51,7 +51,7 @@ def davidSheldrick(request):
     return render(request, 'davidSheldrick.html')
 
 def giraffeCenter(request):
-    return render(request, 'giraffeCenter.html')
+    return render(request, 'giraffeCentre.html')
 
 def nairobiNationalPark(request):
     return render(request, 'nairobiPark.html')
