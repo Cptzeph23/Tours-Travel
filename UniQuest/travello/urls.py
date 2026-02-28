@@ -12,4 +12,15 @@ urlpatterns = [
     path("sitemap.xml", TemplateView.as_view(template_name="sitemap.xml", content_type="application/xml")),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path('gallery/', views.gallery, name='gallery'),
+    path('maasaiVillage/', views.maasaiVillage, name='maasaiVillage'),
+    path('nairobiMuseum/', views.nairobiMuseum, name='nairobiMuseum'),
+    path('kibraSlums/', views.kibraSlums, name='kibraSlums'),
+    path('coffeeFarm/', views.coffeeFarm, name='coffeeFarm'),   
+    path('davidSheldrick/', views.davidSheldrick, name='davidSheldrick'),
+    path('giraffeCenter/', views.giraffeCenter, name='giraffeCenter'),
+    path('nairobiPark/', views.nairobiNationalPark, name='nairobiPark'),
+    path('karenBlixenMuseum/', views.karenBlixenMuseum, name='karenBlixenMuseum'),
+    path('nairobiTour/', views.nairobiCityTour, name='nairobiTour'),
+
+    
 ]
