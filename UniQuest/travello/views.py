@@ -34,3 +34,31 @@ def destinations(request):
 
 def gallery(request):
     return render(request, 'gallery.html')
+
+def maasaiVillage(request):
+    return render(request, 'maasaiVillage.html')
+
+def nairobiMuseum(request):
+    return render(request, 'nairobiMuseum.html')
+
+def kibraSlums(request):
+    return render(request, 'kibraSlums.html')
+
+def coffeeFarm(request):
+    return render(request, 'coffeeFarm.html')
+
+def davidSheldrick(request):
+    return render(request, 'davidSheldrick.html')
+
+def giraffeCenter(request):
+    return render(request, 'giraffeCenter.html')
+
+def nairobiNationalPark(request):
+    return render(request, 'nairobiPark.html')
+
+def karenBlixenMuseum(request):
+    return render(request, 'karenBlixenMuseum.html')
+
+def nairobiCityTour(request):
+    return render(request, 'nairobiTour.html')
+
