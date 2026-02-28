@@ -42,7 +42,7 @@ def nairobiMuseum(request):
     return render(request, 'nairobiMuseum.html')
 
 def kibraSlums(request):
-    return render(request, 'kibraSlums.html')
+    return render(request, 'kibra.html')
 
 def coffeeFarm(request):
     return render(request, 'coffeeFarm.html')
