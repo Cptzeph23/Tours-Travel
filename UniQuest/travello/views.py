@@ -63,6 +63,9 @@ def karenBlixen(request):
 def nairobiCityTour(request):
     return render(request, 'nairobiTour.html')
 
+def booking(request):
+    return render(request, 'bookings.html')
+
 
 #Price Calculation logic for booking form
 
