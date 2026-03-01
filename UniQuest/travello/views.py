@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from .models import Destination, Contact
-from .forms import ContactForm
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
+
+from .models import Booking, Destination, Contact, Payment, Tour
+from .forms import BookingForm, ContactForm
 
 # Create your views here.
 
@@ -61,4 +62,47 @@ def karenBlixen(request):
 
 def nairobiCityTour(request):
     return render(request, 'nairobiTour.html')
+
+
+#Price Calculation logic for booking form
+
+def create_booking(request, tour_id):
+    tour = get_object_or_404(Tour, id=tour_id)
+
+    if request.method == "POST":
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.tour = tour
+
+            #  Core logic
+            booking.total_price = (
+                tour.price_per_person * booking.number_of_people
+            )
+
+            booking.save()
+
+            return redirect("initiate_payment", booking_id=booking.id)
+    else:
+        form = BookingForm()
+
+    return render(request, "booking/form.html", {"form": form, "tour": tour})
+
+# Payment success view to handle successful payments and update booking status
+def payment_success(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    booking.status = "paid"
+    booking.save()
+
+    Payment.objects.create(
+        booking=booking,
+        amount=booking.total_price,
+        is_successful=True
+    )
+
+    send_booking_notification(booking)
+
+    return render(request, "booking/success.html")
+
 
