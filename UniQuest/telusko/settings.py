@@ -2,14 +2,23 @@
 import os
 import dj_database_url
 from pathlib import Path
-from decouple import config, Csv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-CLOUDINARY_CLOUD_NAME = config('CLOUDINARY_CLOUD_NAME')
-CLOUDINARY_API_KEY = config('CLOUDINARY_API_KEY')
-CLOUDINARY_API_SECRET = config('CLOUDINARY_API_SECRET')
+
+def get_env_bool(name, default=False):
+    return os.environ.get(name, str(default)).lower() in ('1', 'true', 'yes', 'on')
+
+
+def get_env_list(name, default=''):
+    value = os.environ.get(name, default)
+    return [item.strip() for item in value.split(',') if item.strip()]
+
+
+CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUDINARY_CLOUD_NAME', '')
+CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY', '')
+CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET', '')
 
 cloudinary.config(
     cloud_name=CLOUDINARY_CLOUD_NAME,
@@ -26,19 +35,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='your-secret-key-here')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-here')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = get_env_bool('DEBUG', True)
 
 # Allow all hosts by default, but restrict in production
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
+ALLOWED_HOSTS = get_env_list('ALLOWED_HOSTS')
 
 if DEBUG:
     ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
 
 # Add Render external hostname if provided
-RENDER_EXTERNAL_HOSTNAME = config('RENDER_EXTERNAL_HOSTNAME', default='')
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME', '')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
@@ -102,7 +111,7 @@ DATABASES = {
 }
 
 # Override with DATABASE_URL if provided (for PostgreSQL)
-DATABASE_URL = config('DATABASE_URL', default='')
+DATABASE_URL = os.environ.get('DATABASE_URL', '')
 if DATABASE_URL:
     DATABASES['default'] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
 
@@ -129,15 +138,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = config('LANGUAGE_CODE', default='en-us')
+LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'en-us')
 
-TIME_ZONE = config('TIME_ZONE', default='UTC')
+TIME_ZONE = os.environ.get('TIME_ZONE', 'UTC')
 
-USE_I18N = config('USE_I18N', default=True, cast=bool)
+USE_I18N = get_env_bool('USE_I18N', True)
 
-USE_L10N = config('USE_L10N', default=True, cast=bool)
+USE_L10N = get_env_bool('USE_L10N', True)
 
-USE_TZ = config('USE_TZ', default=True, cast=bool)
+USE_TZ = get_env_bool('USE_TZ', True)
 
 
 # Static files (CSS, JavaScript, Images)
