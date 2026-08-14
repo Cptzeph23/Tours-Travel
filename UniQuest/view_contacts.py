@@ -7,7 +7,7 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'telusko.settings')
 django.setup()
 
-from travello.models import Contact
+from travelApp.models import Contact
 
 def view_contacts():
     """Simple script to view contact form submissions"""
