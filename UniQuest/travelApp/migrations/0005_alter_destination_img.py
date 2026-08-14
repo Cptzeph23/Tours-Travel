@@ -7,7 +7,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('travello', '0004_alter_contact_options_contact_created_at'),
+        ('travelApp', '0004_alter_contact_options_contact_created_at'),
     ]
 
     operations = [

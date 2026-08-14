@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('travello', '0008_indexdestination_remove_destination_offer_and_more'),
+        ('travelApp', '0008_indexdestination_remove_destination_offer_and_more'),
     ]
 
     operations = [

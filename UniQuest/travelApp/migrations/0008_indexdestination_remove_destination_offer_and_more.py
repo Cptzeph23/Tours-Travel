@@ -5,8 +5,8 @@ from django.db import migrations, models
 
 
 def move_existing_destinations_to_index(apps, schema_editor):
-    old_destinations = apps.get_model('travello', 'Destination')
-    index_destinations = apps.get_model('travello', 'IndexDestination')
+    old_destinations = apps.get_model('travelApp', 'Destination')
+    index_destinations = apps.get_model('travelApp', 'IndexDestination')
     for destination in old_destinations.objects.all().iterator():
         index_destinations.objects.create(
             id=destination.id,
@@ -20,8 +20,8 @@ def move_existing_destinations_to_index(apps, schema_editor):
 
 
 def restore_existing_destinations(apps, schema_editor):
-    old_destinations = apps.get_model('travello', 'Destination')
-    index_destinations = apps.get_model('travello', 'IndexDestination')
+    old_destinations = apps.get_model('travelApp', 'Destination')
+    index_destinations = apps.get_model('travelApp', 'IndexDestination')
     for destination in index_destinations.objects.all().iterator():
         old_destinations.objects.create(
             id=destination.id,
@@ -35,7 +35,7 @@ def restore_existing_destinations(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('travello', '0007_alter_destination_img'),
+        ('travelApp', '0007_alter_destination_img'),
     ]
 
     operations = [

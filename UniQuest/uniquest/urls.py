@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', include('travello.urls')),
+    path('', include('travelApp.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls'))
 ]

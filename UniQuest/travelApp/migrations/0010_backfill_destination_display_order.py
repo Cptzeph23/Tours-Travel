@@ -5,7 +5,7 @@ from django.db import migrations
 
 def assign_missing_orders(apps, schema_editor):
     for model_name in ('IndexDestination', 'Destination'):
-        model = apps.get_model('travello', model_name)
+        model = apps.get_model('travelApp', model_name)
         highest = model.objects.order_by('-display_order', '-id').values_list('display_order', flat=True).first() or 0
         missing = model.objects.filter(display_order=0).order_by('id')
         for destination in missing:
@@ -16,7 +16,7 @@ def assign_missing_orders(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('travello', '0009_alter_destination_options_and_more'),
+        ('travelApp', '0009_alter_destination_options_and_more'),
     ]
 
     operations = [

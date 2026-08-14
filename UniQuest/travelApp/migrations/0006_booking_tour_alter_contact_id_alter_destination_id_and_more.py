@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('travello', '0005_alter_destination_img'),
+        ('travelApp', '0005_alter_destination_img'),
     ]
 
     operations = [
@@ -56,12 +56,12 @@ class Migration(migrations.Migration):
                 ('amount', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('is_successful', models.BooleanField(default=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('booking', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='travello.booking')),
+                ('booking', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='travelApp.booking')),
             ],
         ),
         migrations.AddField(
             model_name='booking',
             name='tour',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='travello.tour'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='travelApp.tour'),
         ),
     ]
