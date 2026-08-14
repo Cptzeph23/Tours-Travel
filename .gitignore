@@ -3,3 +3,4 @@ travel
 .env
 tours/
 tours
+.venv
