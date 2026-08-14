@@ -24,7 +24,7 @@ Render will automatically detect your `render.yaml` file and pre-fill most of th
 4.  **Runtime**: This will be automatically set to **Python** based on your `render.yaml`.
 5.  **Build & Start Commands**: Render will read these directly from your `render.yaml`:
     *   **Build Command**: `sh build.sh`
-    *   **Start Command**: `gunicorn telusko.wsgi:application`
+    *   **Start Command**: `gunicorn uniquest.wsgi:application`
 6.  **Instance Type**: Select the **Free** plan to get started.
 
 ---
