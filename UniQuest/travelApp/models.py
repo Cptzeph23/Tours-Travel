@@ -6,7 +6,7 @@ from django.core.files.uploadedfile import UploadedFile
 from cloudinary.models import CloudinaryField  # type: ignore
 import uuid
 from pathlib import Path
-# Create your models here.
+
 
 
 class DestinationImageField(CloudinaryField):

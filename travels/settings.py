@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "asiatoursagency.apps.AsiatoursagencyConfig",
-    "travello",
+    "travelApp.apps.TravelAppConfig",
 ]
 
 MIDDLEWARE = [
@@ -47,7 +47,7 @@ ROOT_URLCONF = "travels.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ['templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -59,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "travels.wsgi.application"
+WSGI_APPLICATION = "uniquest.wsgi.application"
 
 
 # Database
