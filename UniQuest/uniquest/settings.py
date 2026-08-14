@@ -63,7 +63,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 INSTALLED_APPS = [
-    'travello.apps.TravelloConfig',
+    'travelApp.apps.TravelAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,7 +88,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'telusko.urls'
+ROOT_URLCONF = 'uniquest.urls'
 
 TEMPLATES = [
     {
@@ -106,7 +106,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'telusko.wsgi.application'
+WSGI_APPLICATION = 'uniquest.wsgi.application'
 
 
 # Database Configuration

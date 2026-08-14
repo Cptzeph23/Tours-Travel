@@ -1,6 +1,6 @@
 from django import forms
 
-from travello.models import Booking, Contact
+from travelApp.models import Booking, Contact
 
 
 class ContactForm(forms.ModelForm):
