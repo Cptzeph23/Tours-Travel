@@ -40,6 +40,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-here')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_env_bool('DEBUG', True)
 
+# Cloudinary is only used when explicitly enabled and fully configured.
+# This lets local development remain file-system based even if DEBUG is
+# overridden to False by the shell or process manager.
+USE_CLOUDINARY = get_env_bool(
+    'USE_CLOUDINARY',
+    not DEBUG and all((CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET)),
+) and all((CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET))
+
 # Allow all hosts by default, but restrict in production
 ALLOWED_HOSTS = get_env_list('ALLOWED_HOSTS')
 
@@ -156,17 +164,20 @@ USE_TZ = get_env_bool('USE_TZ', True)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
+    BASE_DIR / "assets",
 ]
 # Render deploy static root
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
-# MEDIA: push media into staticfiles/media (so whitenoise can serve)
+# Development destination uploads are kept in the project assets directory and
+# served as static files. Production uploads continue to use Cloudinary.
+DESTINATION_UPLOAD_ROOT = BASE_DIR / 'assets'
+DESTINATION_UPLOAD_URL = STATIC_URL
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

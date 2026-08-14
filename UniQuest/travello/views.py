@@ -1,13 +1,13 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 
-from .models import Booking, Destination, Contact, Payment, Tour
+from .models import Booking, Destination, IndexDestination, Contact, Payment, Tour
 from .forms import BookingForm, ContactForm
 
 # Create your views here.
 
 def index(request):
-    dests = Destination.objects.all()
+    dests = IndexDestination.objects.order_by('display_order', 'id')[:6]
     return render(request, 'index.html', {'dests': dests})
 
 def contact(request):
@@ -31,7 +31,8 @@ def news(request):
     return render(request, 'news.html')
 
 def destinations(request):
-    return render(request, 'destinations.html')
+    destinations = Destination.objects.order_by('display_order', 'id')
+    return render(request, 'destinations.html', {'destinations': destinations})
 
 def gallery(request):
     return render(request, 'gallery.html')
@@ -107,5 +108,3 @@ def payment_success(request, booking_id):
     send_booking_notification(booking)
 
     return render(request, "booking/success.html")
-
-

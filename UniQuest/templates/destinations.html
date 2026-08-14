@@ -26,6 +26,35 @@
 
         <!--Favicon-->
   <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
+<style>
+    .destinations_container {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 30px;
+        width: 100%;
+        left: 0;
+    }
+    .destinations_container .destination {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    .destinations_container .destination_image {
+        height: 220px;
+        overflow: hidden;
+    }
+    .destinations_container .destination_image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @media (max-width: 768px) {
+        .destinations_container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 576px) {
+        .destinations_container { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
 
@@ -166,164 +195,29 @@
 			</div>
 			<div class="row destinations_row">
 				<div class="col">
-					<div class="destinations_container item_grid">
+					<div class="destinations_container">
 
-						<!-- Destination -->
+						{% for destination in destinations %}
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/kanairo.jpg' %}" alt="">
-								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+								{% if destination.image_url %}<img src="{{ destination.image_url }}" alt="{{ destination.name }}">{% endif %}
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="#">Nairobi National Park</a></div>
-								<div class="destination_subtitle"><p>A Park in the City</p></div>
-								<div class="destination_price mb-3 text-success"><b>From $150</b></div>
-                                <div class="text-justify">Nairobi National Park is one of the most unique wildlife parks in the world, located just
-                                    7 kilometers from Nairobi’s city center. It is the only national park adjacent to a capital
-                                    city, offering visitors
-                                    an opportunity to experience a real African safari without leaving the urban environment</div>
+								<div class="destination_title">{{ destination.name }}</div>
+								<div class="destination_subtitle"><p>{{ destination.subheading }}</p></div>
+								<div class="destination_price text-success mb-3"><b>From ${{ destination.price|floatformat:2 }}</b></div>
+								<div class="text-justify">{{ destination.desc }}</div>
 								<div class="destination_list">
-                                    <p class="mb-3 text-info"><b><u>Key Provisions</u></b></p>
+									<p class="text-info mb-3"><b><u>Key Provisions</u></b></p>
 									<ul>
-										<li>National Park</li>
-										<li>Game Drive</li>
-										<li>Bottle of water</li>
-                                        <li>Guided Visits</li>
+										{% for provision in destination.provision_list %}<li>{{ provision }}</li>{% endfor %}
 									</ul>
 								</div>
 							</div>
 						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/naks.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="#">Lake Nakuru</a></div>
-								<div class="destination_subtitle"><p>Heaven on Earth</p></div>
-								<div class="destination_price text-success mb-3"><b>From $300</b></div>
-                                <div class="text-justify">   Resting squarely on the floor of the Great Rift Valley and surrounded by
-                                            the characteristic woody and bushy grassland, her sky mirrored lake
-                                            waters extending to an expansive mass of semi-alkaline water, Lake
-                                            Nakuru National Park is a ball of beautiful sights waiting to be explored.
-                                            A wide ecological
-                                            diversity, varied wildlife habitats, plant and animal species await the
-                                            wild outdoor lovers. </div>
-								<div class="destination_list">
-                                    <p class="text-info mb-3"><b><u>Key Provisions</u></b></p>
-									<ul>
-										<li>Flamingos</li>
-										<li>National Park</li>
-										<li>Trip inclusive</li>
-										<li>Guided visits</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/mombasa.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="#">Mombasa</a></div>
-								<div class="destination_subtitle"><p>Historic </p></div>
-								<div class="destination_price text-success mb-3"><b>From $400</b></div>
-                                <div class="text-justify">Mombasa, offers much more than transit to the white sands of Diani
-                                    Beach or Tiwi Beach. East Africa’s most important port, its long trading
-                                    history mingles African,
-                                    Arabian, and South Asian cultures, a heritage reflected in architecture
-                                    and street food</div>
-								<div class="destination_list">
-                                    <p class="text-info mb-3"><b><u>Key Provisions</u></b></p>
-									<ul>
-										<li>Beaches</li>
-										<li>SGR Trip though Tsava East & Tsavo West National park</li>
-										<li>Wild Waters</li>
-                                        <li>Fort Jesus</li>
-                                        <li>Haller Park</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/naivasha.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="#">Lake Naivasha</a></div>
-								<div class="destination_subtitle"><p>A site to behold</p></div>
-								<div class="destination_price text-success"><b>From $150</b></div>
-                                <div class="text-justify">Lake Naivasha stands as Kenya's only freshwater lake within the Great Rift Valley,
-                                    positioned at 1,884 meters above sea level and just 90 kilometers
-                                    northwest of Nairobi. This geographical uniqueness makes it a fascinating anomaly </div>
-								<div class="destination_list">
-                                    <div class="text-info mb-3"><b><u>Key Provisions</u></b></div>
-									<ul>
-										<li>Hell's Gate National Park</li>
-										<li>Crescent Island</li>
-										<li>Boat Rides</li>
-										<li>Guided Visits</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-                        <!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/Ambosseli.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="#">Amboseli National Park</a></div>
-								<div class="destination_subtitle"><p>Home of the African Elephant</p></div>
-								<div class="destination_price text-success mb-3"><b>From $150</b></div>
-                                <div class="text-justify">Situated in the southern region of Kenya, Amboseli
-                                    National Park stands as a renowned wildlife conservation area, enticing
-                                    visitors with its stunning rich biodiversity and stunning landscapes.
-                                    It is a home to iconic wildlife, hosting four members of the Big Five,
-                                    from lions to the graceful zebras and countless number of bird species in
-                                    its swamps and wetlands. </div>
-								<div class="destination_list">
-                                    <div class="text-info mb-3"><b><u>Key Provisions</u></b></div>
-									<ul>
-										<li>Game Drive</li>
-										<li>Bottle of water</li>
-										<li>Guided Visits</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-                        <!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/David Sheldrick.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="#">David Sheldrick</a></div>
-								<div class="destination_subtitle"><p>Home for Elephants & Rhinos</p></div>
-								<div class="destination_price text-success"><b>From $150</b></div>
-                                <div class="text-justify">Best known for our work to protect elephants, the Sheldrick Wildlife Trust
-                                    (SWT) operates the most successful orphan elephant rescue and rehabilitation program in the world.
-                                    We embrace all measures that complement the conservation, preservation and protection of wildlife
-                                    including anti-poaching, safe guarding the natural environment, enhancing community awareness and
-                                    providing veterinary assistance to animals in need </div>
-								<div class="destination_list">
-                                    <div class="text-info mt-5 mb-3"><b><u>Key Provisions</u></b></div>
-									<ul>
-										<li>Animal Orpahange</li>
-										<li>Wildlife Conservancy</li>
-										<li>Elephants & Rhinos</li>
-										<li>Guided Visits</li>
-									</ul>
-								</div>
-							</div>
-						</div>
+						{% empty %}
+						<p class="text-center w-100">Our destinations will appear here soon.</p>
+						{% endfor %}
 
 
 					</div>

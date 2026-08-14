@@ -1,11 +1,65 @@
 from django.db import models  # type: ignore
+from django.db.models import Max
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.core.files.uploadedfile import UploadedFile
 from cloudinary.models import CloudinaryField  # type: ignore
 import uuid
+from pathlib import Path
 # Create your models here.
 
-class Destination(models.Model):
+
+class DestinationImageField(CloudinaryField):
+    """Use local Django storage in development and Cloudinary in production."""
+
+    def pre_save(self, model_instance, add):
+        value = getattr(model_instance, self.attname)
+        if not settings.USE_CLOUDINARY and isinstance(value, UploadedFile):
+            storage = FileSystemStorage(
+                location=settings.DESTINATION_UPLOAD_ROOT,
+                base_url=settings.DESTINATION_UPLOAD_URL,
+            )
+            stored_name = storage.save(f'uploads/destinations/{value.name}', value)
+            setattr(model_instance, self.attname, stored_name)
+            return stored_name
+        return super().pre_save(model_instance, add)
+
+
+class DestinationImageMixin:
+    @property
+    def image_url(self):
+        """Return the local or production image URL for the destination."""
+        if not self.img:
+            return ''
+        public_id = getattr(self.img, 'public_id', str(self.img))
+        if public_id.startswith('uploads/destinations/'):
+            storage = FileSystemStorage(
+                location=settings.DESTINATION_UPLOAD_ROOT,
+                base_url=settings.DESTINATION_UPLOAD_URL,
+            )
+            if storage.exists(public_id):
+                return storage.url(public_id)
+
+            relative_path = Path(public_id)
+            try:
+                _, files = storage.listdir(str(relative_path.parent))
+            except FileNotFoundError:
+                files = []
+            for filename in files:
+                if Path(filename).stem == relative_path.name:
+                    return storage.url(str(relative_path.parent / filename))
+            return ''
+        if not settings.USE_CLOUDINARY:
+            return ''
+        try:
+            return self.img.url
+        except ValueError:
+            return ''
+
+
+class IndexDestination(DestinationImageMixin, models.Model):
     name = models.CharField(max_length=100)
-    img = CloudinaryField(
+    img = DestinationImageField(
         'image',
         folder='destinations',  # Organize images in a folder
         use_filename=True,      # Use original filename
@@ -15,6 +69,55 @@ class Destination(models.Model):
     desc = models.TextField()
     price = models.IntegerField()
     offer = models.BooleanField(default=False)
+    display_order = models.PositiveIntegerField(
+        default=0,
+        help_text='Lower numbers appear first. Ties use the original ID order.',
+    )
+
+    class Meta:
+        ordering = ('display_order', 'id')
+
+    def save(self, *args, **kwargs):
+        if self._state.adding and self.display_order == 0:
+            self.display_order = (type(self).objects.aggregate(max_order=Max('display_order'))['max_order'] or 0) + 1
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+class Destination(DestinationImageMixin, models.Model):
+    name = models.CharField(max_length=100)
+    img = DestinationImageField(
+        'image',
+        folder='destinations',
+        use_filename=True,
+        unique_filename=False,
+        overwrite=True,
+    )
+    subheading = models.CharField(max_length=180, default='')
+    desc = models.TextField()
+    price = models.IntegerField()
+    key_provisions = models.TextField(
+        default='',
+        help_text='Enter one key provision per line.'
+    )
+    display_order = models.PositiveIntegerField(
+        default=0,
+        help_text='Lower numbers appear first. Ties use the original ID order.',
+    )
+
+    class Meta:
+        ordering = ('display_order', 'id')
+
+    def save(self, *args, **kwargs):
+        if self._state.adding and self.display_order == 0:
+            self.display_order = (type(self).objects.aggregate(max_order=Max('display_order'))['max_order'] or 0) + 1
+        super().save(*args, **kwargs)
+
+    @property
+    def provision_list(self):
+        return [item.strip() for item in self.key_provisions.splitlines() if item.strip()]
 
     def __str__(self):
         return self.name
