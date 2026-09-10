@@ -5,6 +5,9 @@ services:
     plan: free
     buildCommand: "./build.sh"
     startCommand: "gunicorn uniquest.wsgi:application"
+    releaseCommand: |
+      python manage.py migrate
+      python manage.py ensure_superuser
     envVars:
       - key: SECRET_KEY
         generateValue: true
