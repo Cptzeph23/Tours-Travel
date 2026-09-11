@@ -15,3 +15,6 @@ __pycache__/
 *.swo
 *~
 .travel
+tours/
+tours
+
