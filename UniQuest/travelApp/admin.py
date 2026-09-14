@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 from django.utils.html import format_html
-from .models import Destination, IndexDestination, Contact
+from .models import Destination, GalleryItem, IndexDestination, Contact
 
 
 class DestinationImageAdminForm(forms.ModelForm):
@@ -32,6 +32,22 @@ class DestinationAdminForm(DestinationImageAdminForm):
     class Meta:
         model = Destination
         fields = '__all__'
+
+
+class GalleryAdminForm(DestinationImageAdminForm):
+    image = forms.FileField(required=False, label='Media file', widget=forms.FileInput)
+
+    class Meta:
+        model = GalleryItem
+        fields = '__all__'
+
+    def clean_image(self):
+        uploaded_media = self.cleaned_data.get('image')
+        if uploaded_media:
+            return uploaded_media
+        if self.instance and self.instance.pk:
+            return self.instance.image
+        return uploaded_media
 
 
 class DestinationAdminDisplayMixin:
@@ -96,6 +112,42 @@ class DestinationAdmin(DestinationAdminDisplayMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {'fields': ('display_order', 'name', 'img', 'current_image', 'subheading', 'desc', 'price', 'key_provisions')}),
     )
+
+
+@admin.register(GalleryItem)
+class GalleryItemAdmin(DestinationAdminDisplayMixin, admin.ModelAdmin):
+    form = GalleryAdminForm
+    list_display = ('name', 'media_type', 'description_preview', 'display_order', 'image_preview')
+    list_filter = ('media_type',)
+    ordering = ('display_order', 'id')
+    search_fields = ('name', 'caption')
+    readonly_fields = ('current_media',)
+    fieldsets = (
+        (None, {'fields': ('display_order', 'name', 'image', 'current_media', 'media_type', 'caption')}),
+    )
+
+    @admin.display(description='Description')
+    def description_preview(self, obj):
+        return obj.caption[:80] + ('…' if len(obj.caption) > 80 else '')
+
+    @admin.display(description='Preview')
+    def image_preview(self, obj):
+        if not obj.media_url:
+            return 'No media'
+        if obj.media_type == 'video':
+            return format_html(
+                '<video src="{}" style="width: 90px; height: 60px; object-fit: cover;" muted></video>',
+                obj.media_url,
+            )
+        return format_html(
+            '<img src="{}" alt="{}" style="width: 90px; height: 60px; object-fit: cover; border-radius: 4px;">',
+            obj.media_url,
+            obj.name,
+        )
+
+    @admin.display(description='Current media')
+    def current_media(self, obj):
+        return self.image_preview(obj)
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):

@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 
-from .models import Booking, Destination, IndexDestination, Contact, Payment, Tour
+from .models import Booking, Destination, GalleryItem, IndexDestination, Contact, Payment, Tour
 from .forms import BookingForm, ContactForm
 
 # Create your views here.
@@ -35,7 +35,8 @@ def destinations(request):
     return render(request, 'destinations.html', {'destinations': destinations})
 
 def gallery(request):
-    return render(request, 'gallery.html')
+    gallery_items = GalleryItem.objects.order_by('display_order', 'id')
+    return render(request, 'gallery.html', {'gallery_items': gallery_items})
 
 def maasaiVillage(request):
     return render(request, 'maasaiVillage.html')

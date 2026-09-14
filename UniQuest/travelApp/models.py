@@ -12,6 +12,12 @@ from pathlib import Path
 class DestinationImageField(CloudinaryField):
     """Use local Django storage in development and Cloudinary in production."""
 
+    upload_directory = 'destinations'
+
+    def __init__(self, *args, **kwargs):
+        self.upload_directory = kwargs.pop('upload_directory', self.upload_directory)
+        super().__init__(*args, **kwargs)
+
     def pre_save(self, model_instance, add):
         value = getattr(model_instance, self.attname)
         if not settings.USE_CLOUDINARY and isinstance(value, UploadedFile):
@@ -19,7 +25,7 @@ class DestinationImageField(CloudinaryField):
                 location=settings.DESTINATION_UPLOAD_ROOT,
                 base_url=settings.DESTINATION_UPLOAD_URL,
             )
-            stored_name = storage.save(f'uploads/destinations/{value.name}', value)
+            stored_name = storage.save(f'uploads/{self.upload_directory}/{value.name}', value)
             setattr(model_instance, self.attname, stored_name)
             return stored_name
         return super().pre_save(model_instance, add)
@@ -76,6 +82,73 @@ class IndexDestination(DestinationImageMixin, models.Model):
 
     class Meta:
         ordering = ('display_order', 'id')
+
+    def save(self, *args, **kwargs):
+        if self._state.adding and self.display_order == 0:
+            self.display_order = (type(self).objects.aggregate(max_order=Max('display_order'))['max_order'] or 0) + 1
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+class GalleryImageField(DestinationImageField):
+    upload_directory = 'gallery'
+
+
+class GalleryItem(models.Model):
+    MEDIA_TYPES = (
+        ('image', 'Image'),
+        ('video', 'Video'),
+    )
+
+    name = models.CharField(max_length=150)
+    image = GalleryImageField(
+        'media file',
+        folder='gallery',
+        resource_type='auto',
+        use_filename=True,
+        unique_filename=False,
+        overwrite=True,
+    )
+    media_type = models.CharField(max_length=10, choices=MEDIA_TYPES, default='image')
+    caption = models.TextField()
+    display_order = models.PositiveIntegerField(
+        default=0,
+        help_text='Lower numbers appear first. Ties use the original ID order.',
+    )
+
+    class Meta:
+        ordering = ('display_order', 'id')
+
+    @property
+    def media_url(self):
+        if not self.image:
+            return ''
+        public_id = getattr(self.image, 'public_id', str(self.image))
+        prefix = 'uploads/gallery/'
+        if public_id.startswith(prefix):
+            storage = FileSystemStorage(
+                location=settings.DESTINATION_UPLOAD_ROOT,
+                base_url=settings.DESTINATION_UPLOAD_URL,
+            )
+            if storage.exists(public_id):
+                return storage.url(public_id)
+            relative_path = Path(public_id)
+            try:
+                _, files = storage.listdir(str(relative_path.parent))
+            except FileNotFoundError:
+                files = []
+            for filename in files:
+                if Path(filename).stem == relative_path.name:
+                    return storage.url(str(relative_path.parent / filename))
+            return ''
+        if not settings.USE_CLOUDINARY:
+            return ''
+        try:
+            return self.image.url
+        except ValueError:
+            return ''
 
     def save(self, *args, **kwargs):
         if self._state.adding and self.display_order == 0:

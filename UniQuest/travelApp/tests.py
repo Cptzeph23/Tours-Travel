@@ -3,8 +3,8 @@ from django.core.files.storage import FileSystemStorage
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
 
-from .admin import DestinationAdmin, DestinationAdminForm, IndexDestinationAdmin
-from .models import Destination, IndexDestination
+from .admin import DestinationAdmin, DestinationAdminForm, GalleryItemAdmin, IndexDestinationAdmin
+from .models import Destination, GalleryItem, IndexDestination
 
 
 class DestinationHomepageTests(TestCase):
@@ -108,3 +108,19 @@ class DestinationHomepageTests(TestCase):
         self.assertContains(response, 'Main destination')
         self.assertContains(response, 'A memorable experience')
         self.assertContains(response, 'Guided visits')
+
+    def test_gallery_page_renders_admin_managed_items_in_order(self):
+        GalleryItem.objects.create(
+            name='Second gallery item', image='', caption='Second caption', display_order=2,
+        )
+        GalleryItem.objects.create(
+            name='First gallery item', image='', caption='First caption', display_order=1,
+        )
+
+        response = self.client.get('/gallery/')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'First gallery item')
+        self.assertContains(response, 'Second gallery item')
+        self.assertLess(response.content.index(b'First gallery item'), response.content.index(b'Second gallery item'))
+        self.assertIn('image_preview', GalleryItemAdmin.list_display)
