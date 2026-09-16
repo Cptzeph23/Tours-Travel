@@ -21,6 +21,8 @@ class DestinationHomepageTests(TestCase):
         sitemap_response = self.client.get('/sitemap.xml')
 
         self.assertEqual(robots_response.status_code, 200)
+        self.assertEqual(robots_response['Cache-Control'], 'no-store, max-age=0, must-revalidate')
+        self.assertContains(robots_response, 'Allow: /')
         self.assertContains(robots_response, 'Disallow: /admin/')
         self.assertContains(robots_response, 'Sitemap: https://www.uniquesttravels.tours/sitemap.xml')
         self.assertEqual(sitemap_response.status_code, 200)

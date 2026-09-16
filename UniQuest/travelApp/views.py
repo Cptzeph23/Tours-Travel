@@ -50,7 +50,11 @@ def robots_txt(request):
         'Disallow: /booking/\n'
         f'Sitemap: {settings.SITE_URL}/sitemap.xml\n'
     )
-    return HttpResponse(content, content_type='text/plain')
+    response = HttpResponse(content, content_type='text/plain')
+    # Robots directives must reflect the current deployment immediately. Avoid
+    # serving an older blocking version from an intermediary cache.
+    response['Cache-Control'] = 'no-store, max-age=0, must-revalidate'
+    return response
 
 def maasaiVillage(request):
     return render(request, 'maasaiVillage.html')
