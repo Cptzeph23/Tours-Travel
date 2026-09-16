@@ -37,8 +37,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-here')
 
+SITE_URL = os.environ.get('SITE_URL', 'https://www.uniquesttravels.tours').rstrip('/')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_env_bool('DEBUG', True)
+
+# Render terminates HTTPS at its proxy. Trust its forwarded scheme so Django
+# generates HTTPS URLs (including sitemap entries) for public requests.
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Cloudinary is only used when explicitly enabled and fully configured.
 # This lets local development remain file-system based even if DEBUG is
@@ -70,6 +77,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'whitenoise.runserver_nostatic',
     'accounts',
     'cloudinary',
@@ -101,6 +109,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'travelApp.context_processors.seo',
             ],
         },
     },

@@ -8,6 +8,25 @@ from .models import Destination, GalleryItem, IndexDestination
 
 
 class DestinationHomepageTests(TestCase):
+    def test_homepage_has_search_metadata_and_structured_data(self):
+        response = self.client.get('/')
+
+        self.assertContains(response, 'UniQuest Tours &amp; Travels | Kenya Safaris, Tours &amp; Travel Experiences')
+        self.assertContains(response, 'rel="canonical" href="https://www.uniquesttravels.tours/"')
+        self.assertContains(response, 'application/ld+json')
+        self.assertContains(response, 'TravelAgency')
+
+    def test_robots_and_sitemap_expose_public_pages(self):
+        robots_response = self.client.get('/robots.txt')
+        sitemap_response = self.client.get('/sitemap.xml')
+
+        self.assertEqual(robots_response.status_code, 200)
+        self.assertContains(robots_response, 'Disallow: /admin/')
+        self.assertContains(robots_response, 'Sitemap: https://www.uniquesttravels.tours/sitemap.xml')
+        self.assertEqual(sitemap_response.status_code, 200)
+        self.assertContains(sitemap_response, 'http://testserver/destinations/')
+        self.assertContains(sitemap_response, 'http://testserver/gallery/')
+
     @override_settings(DEBUG=True, USE_CLOUDINARY=False)
     def test_destination_image_is_saved_to_local_assets_in_development(self):
         destination = IndexDestination.objects.create(

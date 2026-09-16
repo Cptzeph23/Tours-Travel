@@ -13,14 +13,13 @@
 
   gtag('config', 'G-FH39CD7DVH');
 </script>
-<title>About us</title>
+<title>{{ seo.title }}</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Travello template project">
+<meta name="description" content="{{ seo.description }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- SEO Meta Tags -->
-    <meta name="description" content="uniquest travels – where adventure meets authenticity.">
   <meta name="keywords" content="uniquest,  travels, tours, uniquest tours, uniquest travels">
   <meta name="author" content="travels and tours, Uniquest Tours">
   <meta name="robots" content="index, follow">
@@ -36,6 +35,7 @@
 
         <!--Favicon-->
   <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
+  {% include "partials/seo.html" %}
 </head>
 <body>
 

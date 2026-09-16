@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
+from django.conf import settings
+from django.http import HttpResponse
 
 from .models import Booking, Destination, GalleryItem, IndexDestination, Contact, Payment, Tour
 from .forms import BookingForm, ContactForm
@@ -37,6 +39,18 @@ def destinations(request):
 def gallery(request):
     gallery_items = GalleryItem.objects.order_by('display_order', 'id')
     return render(request, 'gallery.html', {'gallery_items': gallery_items})
+
+
+def robots_txt(request):
+    content = (
+        'User-agent: *\n'
+        'Allow: /\n'
+        'Disallow: /admin/\n'
+        'Disallow: /accounts/\n'
+        'Disallow: /booking/\n'
+        f'Sitemap: {settings.SITE_URL}/sitemap.xml\n'
+    )
+    return HttpResponse(content, content_type='text/plain')
 
 def maasaiVillage(request):
     return render(request, 'maasaiVillage.html')
