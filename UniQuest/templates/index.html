@@ -42,6 +42,26 @@
 
 
    <style>
+        .booking_actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+
+        .booking_actions a {
+            align-items: center;
+            display: inline-flex;
+            min-height: 46px;
+            justify-content: center;
+            padding: 11px 24px;
+        }
+
+        .booking_actions .whatsapp_action {
+            background-color: #032042;
+            color: #fff;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -510,22 +530,16 @@
 </div>
 	</div>
 
-    <div class="text-center mt-4">
-        <button type="button" style="background-color: #032042;" class="newsletter_button btn-warning"><b>Book Now</b></button>
-    </div>
-
-
+    <section class="text-center text-light mt-4">
+        <h2 class="text-success">Ready to plan your visit?</h2>
+        <p>Choose the option that works best for you.</p>
+        <div class="booking_actions">
+            <a href="{% url 'booking' %}" style="background-color: #032042;" class="newsletter_button btn-warning"><b>Book Now</b></a>
+            <a href="https://wa.me/254769634078" target="_blank" rel="noopener" class="newsletter_button whatsapp_action"><i class="fa fa-whatsapp text-success mr-2" aria-hidden="true"></i><b>Book on WhatsApp</b></a>
+        </div>
     </section>
 
-<section class="text-center text-light">
-    <div>
-        <h2 class="text-success">Book Now On WhatsApp!</h2>
-        <p>For Quick service, reach out to us on WhatsApp</p>
-        <p>Send us your name, desired destination and date of visit</p> <br>
-        <div><button style="background-color: #032042;" class="newsletter_button btn-warning"><a href="https://wa.me/+254769634078" target="_blank"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i> <b>Chat on Whatsapp</b></a></button></div>
-
-    </div>
-</section>
+    </section>
 
 	<!-- Testimonials -->
 

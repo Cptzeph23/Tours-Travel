@@ -1,0 +1,149 @@
+.booking_page {
+    background: #f5f7f8;
+}
+
+.booking_hero {
+    min-height: 310px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 0 42px;
+}
+
+.booking_hero .background_image {
+    opacity: .78;
+}
+
+.booking_hero_content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.booking_hero_content h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.booking_panel {
+    background: #fff;
+    border-top: 5px solid #032042;
+    box-shadow: 0 14px 38px rgba(3, 32, 66, .12);
+    margin-top: -54px;
+    position: relative;
+    z-index: 2;
+}
+
+.booking_intro {
+    border-bottom: 1px solid #e9ecef;
+    padding: 30px 36px 24px;
+}
+
+.booking_intro h2 {
+    color: #032042;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.booking_form {
+    padding: 28px 36px 36px;
+}
+
+.booking_section_title {
+    color: #198754;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 4px 0 18px;
+}
+
+.booking_field {
+    margin-bottom: 20px;
+}
+
+.booking_field label {
+    color: #032042;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.booking_field .form-control {
+    border: 1px solid #d7dde3;
+    border-radius: 2px;
+    min-height: 44px;
+    padding: 10px 13px;
+}
+
+.booking_field textarea.form-control {
+    min-height: 112px;
+}
+
+.booking_field .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 2px rgba(25, 135, 84, .12);
+}
+
+.booking_submit {
+    background: #032042;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    min-height: 48px;
+    padding: 12px 25px;
+    transition: background .2s ease;
+}
+
+.booking_submit:hover,
+.booking_submit:focus {
+    background: #198754;
+    color: #fff;
+}
+
+.booking_note {
+    color: #6c757d;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.booking_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+.booking_actions a {
+    align-items: center;
+    display: inline-flex;
+    min-height: 46px;
+    justify-content: center;
+    padding: 11px 24px;
+}
+
+.booking_actions .whatsapp_action {
+    background: #032042;
+    color: #fff;
+}
+
+.booking_actions .whatsapp_action:hover {
+    color: #fff;
+    opacity: .9;
+}
+
+@media (max-width: 767px) {
+    .booking_hero_content h1 {
+        font-size: 32px;
+    }
+
+    .booking_intro,
+    .booking_form {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .booking_panel {
+        margin-top: -32px;
+    }
+}
