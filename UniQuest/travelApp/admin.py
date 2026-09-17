@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 from django.utils.html import format_html
-from .models import Destination, GalleryItem, IndexDestination, Contact
+from .models import BookingInquiry, Destination, GalleryItem, IndexDestination, Contact
 
 
 class DestinationImageAdminForm(forms.ModelForm):
@@ -154,5 +154,14 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'subject', 'created_at')
     list_filter = ('created_at',)
     search_fields = ('name', 'email', 'subject', 'message')
+    readonly_fields = ('created_at',)
+    ordering = ('-created_at',)
+
+
+@admin.register(BookingInquiry)
+class BookingInquiryAdmin(admin.ModelAdmin):
+    list_display = ('client_name', 'email', 'preferred_location', 'visit_date', 'number_of_people', 'budget_range', 'created_at')
+    list_filter = ('budget_range', 'visit_date', 'created_at')
+    search_fields = ('client_name', 'email', 'preferred_location', 'preferred_services', 'additional_requests')
     readonly_fields = ('created_at',)
     ordering = ('-created_at',)

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Booking request received | UniQuest Tours & Travels{% endblock %}
+{% block content %}
+<main class="container py-5"><div class="row justify-content-center"><div class="col-lg-8">
+    <div class="text-center mb-4"><h1 class="text-success">Request received</h1><p>Thank you, {{ inquiry.client_name }}. A confirmation has been sent to {{ inquiry.email }}.</p></div>
+    <div class="card shadow-sm"><div class="card-body"><h2 class="h4">Your booking details</h2><dl class="row mb-0"><dt class="col-sm-5">Preferred location</dt><dd class="col-sm-7">{{ inquiry.preferred_location }}</dd><dt class="col-sm-5">Date of visit</dt><dd class="col-sm-7">{{ inquiry.visit_date }}</dd><dt class="col-sm-5">People</dt><dd class="col-sm-7">{{ inquiry.number_of_people }}</dd><dt class="col-sm-5">Budget</dt><dd class="col-sm-7">{{ inquiry.get_budget_range_display }}</dd><dt class="col-sm-5">Services</dt><dd class="col-sm-7">{{ inquiry.preferred_services|default:'Not specified' }}</dd><dt class="col-sm-5">Additional requests</dt><dd class="col-sm-7">{{ inquiry.additional_requests|default:'None' }}</dd></dl></div></div>
+    <div class="text-center mt-4"><a href="{% url 'index' %}" class="btn btn-warning">Back to homepage</a></div>
+</div></div></main>
+{% endblock %}

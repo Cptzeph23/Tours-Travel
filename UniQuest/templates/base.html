@@ -1,23 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FH39CD7DVH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-FH39CD7DVH');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniQuest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}UniQuest Tours & Travels{% endblock %}</title>
+    <meta name="description" content="{{ seo.description }}">
+    <link rel="icon" href="{% static 'images/favicon2.png' %}">
+    <link rel="stylesheet" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main_styles.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
-
-<body bgcolor="cyan">
-    {% block content %}
-
-    {% endblock %}
+<body>
+    <div class="super_container">
+        {% include 'partials/site_header.html' %}
+        {% block content %}{% endblock %}
+        {% include 'partials/site_footer.html' %}
+    </div>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

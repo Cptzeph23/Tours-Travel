@@ -2,9 +2,11 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponse
+from django.db import transaction
 
-from .models import Booking, Destination, GalleryItem, IndexDestination, Contact, Payment, Tour
-from .forms import BookingForm, ContactForm
+from .models import Booking, BookingInquiry, Destination, GalleryItem, IndexDestination, Contact, Payment, Tour
+from .forms import BookingForm, BookingInquiryForm, ContactForm
+from .services import send_booking_inquiry_emails
 
 # Create your views here.
 
@@ -84,7 +86,20 @@ def nairobiCityTour(request):
     return render(request, 'nairobiTour.html')
 
 def booking(request):
-    return render(request, 'bookings.html')
+    if request.method == 'POST':
+        form = BookingInquiryForm(request.POST)
+        if form.is_valid():
+            inquiry = form.save()
+            transaction.on_commit(lambda: send_booking_inquiry_emails(inquiry))
+            return redirect('booking_confirmation', inquiry_id=inquiry.pk)
+    else:
+        form = BookingInquiryForm()
+    return render(request, 'booking.html', {'form': form})
+
+
+def booking_confirmation(request, inquiry_id):
+    inquiry = get_object_or_404(BookingInquiry, pk=inquiry_id)
+    return render(request, 'booking_confirmation.html', {'inquiry': inquiry})
 
 
 #Price Calculation logic for booking form

@@ -4,3 +4,4 @@ travel
 tours/
 tours
 .venv
+.env.example

@@ -2,9 +2,14 @@
 import os
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 def get_env_bool(name, default=False):
@@ -27,10 +32,6 @@ cloudinary.config(
 )
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -38,6 +39,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-here')
 
 SITE_URL = os.environ.get('SITE_URL', 'https://www.uniquesttravels.tours').rstrip('/')
+
+# Resend configuration for public booking-inquiry emails. Keep the actual
+# credentials in .env locally and in Render environment variables in production.
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
+RESEND_FROM_NAME = os.environ.get('RESEND_FROM_NAME', 'UniQuest Tours')
+RESEND_FROM_EMAIL = os.environ.get('RESEND_FROM_EMAIL', '')
+BOOKING_NOTIFICATION_EMAIL = os.environ.get(
+    'BOOKING_NOTIFICATION_EMAIL',
+    'uniquestadventureslimited@gmail.com',
+)
+BOOKING_COPY_TO_CUSTOMER = get_env_bool('BOOKING_COPY_TO_CUSTOMER', True)
+RESEND_TIMEOUT = int(os.environ.get('RESEND_TIMEOUT', '30'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_env_bool('DEBUG', True)

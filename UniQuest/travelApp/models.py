@@ -209,6 +209,36 @@ class Contact(models.Model):
     class Meta:
         ordering = ['-created_at']
 
+
+class BookingInquiry(models.Model):
+    """A no-payment booking request submitted from the public website."""
+
+    BUDGET_CHOICES = (
+        ('under_100', 'Under $100 per person'),
+        ('100_250', '$100–$250 per person'),
+        ('250_500', '$250–$500 per person'),
+        ('500_plus', 'Over $500 per person'),
+        ('flexible', 'Flexible / discuss with us'),
+    )
+
+    client_name = models.CharField(max_length=150)
+    email = models.EmailField()
+    preferred_location = models.CharField(max_length=200)
+    visit_date = models.DateField()
+    number_of_people = models.PositiveIntegerField()
+    budget_range = models.CharField(max_length=20, choices=BUDGET_CHOICES)
+    preferred_services = models.TextField(blank=True)
+    additional_requests = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-created_at',)
+        verbose_name = 'booking inquiry'
+        verbose_name_plural = 'booking inquiries'
+
+    def __str__(self):
+        return f'{self.client_name} — {self.preferred_location}'
+
 # Bookings model to store tour bookings
 class Tour(models.Model):
     title = models.CharField(max_length=255)

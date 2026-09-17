@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book a trip | UniQuest Tours & Travels{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'styles/contact.css' %}">{% endblock %}
+{% block content %}
+<div class="home"><div class="background_image" style="background-image:url({% static 'images/simba.jpg' %})"></div></div>
+<main class="container py-5"><div class="row justify-content-center"><div class="col-lg-9">
+    <div class="text-center mb-5"><h1 class="text-success">Plan your experience</h1><p>Share a few details and our team will help you build the right trip.</p></div>
+    <form method="post" class="contact_form bg-white p-4 shadow-sm">
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+        <div class="row">{% for field in form %}<div class="col-md-{% if field.name == 'preferred_services' or field.name == 'additional_requests' %}12{% else %}6{% endif %} mb-4">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}
+            {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+            {% for error in field.errors %}<small class="text-danger d-block">{{ error }}</small>{% endfor %}
+        </div>{% endfor %}</div>
+        <button type="submit" class="contact_button">Send booking request</button>
+    </form>
+</div></div></main>
+{% endblock %}

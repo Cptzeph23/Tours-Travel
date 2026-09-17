@@ -1,10 +1,13 @@
+from datetime import timedelta
+
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
+from django.utils import timezone
 
 from .admin import DestinationAdmin, DestinationAdminForm, GalleryItemAdmin, IndexDestinationAdmin
-from .models import Destination, GalleryItem, IndexDestination
+from .models import BookingInquiry, Destination, GalleryItem, IndexDestination
 
 
 class DestinationHomepageTests(TestCase):
@@ -145,3 +148,36 @@ class DestinationHomepageTests(TestCase):
         self.assertContains(response, 'Second gallery item')
         self.assertLess(response.content.index(b'First gallery item'), response.content.index(b'Second gallery item'))
         self.assertIn('image_preview', GalleryItemAdmin.list_display)
+
+
+class BookingInquiryTests(TestCase):
+    booking_data = {
+        'client_name': 'Amina Otieno',
+        'email': 'amina@example.com',
+        'preferred_location': 'Maasai Mara',
+        'visit_date': '2030-08-14',
+        'number_of_people': 3,
+        'budget_range': '100_250',
+        'preferred_services': 'Safari guide and airport transfer',
+        'additional_requests': 'Vegetarian meals',
+    }
+
+    def test_booking_request_is_saved_and_confirmation_is_rendered(self):
+        response = self.client.post('/booking/', self.booking_data)
+
+        self.assertRedirects(response, '/booking/confirmation/1/')
+        inquiry = BookingInquiry.objects.get()
+        confirmation = self.client.get(response.url)
+        self.assertContains(confirmation, 'Request received')
+        self.assertContains(confirmation, inquiry.preferred_location)
+        self.assertContains(confirmation, inquiry.preferred_services)
+
+    def test_booking_request_rejects_a_past_visit_date(self):
+        response = self.client.post(
+            '/booking/',
+            {**self.booking_data, 'visit_date': (timezone.localdate() - timedelta(days=1)).isoformat()},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Please select today or a future date.')
+        self.assertFalse(BookingInquiry.objects.exists())
