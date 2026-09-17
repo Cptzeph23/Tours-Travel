@@ -1312,11 +1312,11 @@ section
 
 .booking_cta {
 	align-items: center;
-	background-color: #08a9ff !important;
-	border: 2px solid #08a9ff;
-	border-radius: 4px;
+	background-color: #1a008b !important;
+	border: 2px solid #c4be8c;
+	border-radius: 15px;
 	box-shadow: 0 4px 12px rgba(8, 169, 255, .35);
-	color: #28ff3f !important;
+	color: #f30505 !important;
 	display: inline-flex !important;
 	font-size: 15px !important;
 	font-weight: 800 !important;
