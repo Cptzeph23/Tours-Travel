@@ -18,7 +18,7 @@
                 <h2 class="text-center">Plan your trip with UniQuest</h2>
                 <p class="mb-0 text-dark text-center">Complete the form below. Our team will review your request and contact you with a tailored proposal.</p>
             </div>
-            <form method="post" class="booking_form" style="align-items: center; align-content: center; justify-content: center; text-align: center;">
+            <form method="post" class="booking_form" style="align-items: center; align-content: center; justify-content: center;">
                 {% csrf_token %}
                 {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
                 <div class="booking_section_title">Your details</div>
@@ -38,7 +38,7 @@
                     <div class="col-md-6 booking_field">{{ form.preferred_services.label_tag }}{{ form.preferred_services }}{% for error in form.preferred_services.errors %}<small class="text-danger d-block">{{ error }}</small>{% endfor %}</div>
                     <div class="col-md-6 booking_field">{{ form.additional_requests.label_tag }}{{ form.additional_requests }}{% for error in form.additional_requests.errors %}<small class="text-danger d-block">{{ error }}</small>{% endfor %}</div>
                 </div>
-                <button type="submit" class="booking_submit text-center" style="background-color: #05d327; color: white; border-radius: 5px;">Send booking request</button>
+                <button type="submit" class="booking_submit text-center" style="background-color: #010a55; color: rgb(2, 255, 23); border-radius: 5px; justify-content: center; align-items: center; align-content: center;">Send booking request</button>
                 <p class="booking_note mb-0">We will use your email only to respond to this booking request.</p>
             </form>
         </div>
