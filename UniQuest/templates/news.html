@@ -48,7 +48,7 @@
 									<li><a href="/contact/">Contact</a></li>
 									<li><a href="/destinations/">Destinations</a></li>
 									<li><a href="/gallery/">Gallery</a></li>
-									<li><a href="/booking/" style="background-color: #032042;" class="newsletter_button btn-warning"><b>Book Now</b></a></li>
+									<li><a href="/booking/" class="booking_cta"><b>Book Now</b></a></li>
 
 									{% if user.is_authenticated %}
 										<li><a href="/logout/">Logout</a></li>
@@ -104,6 +104,9 @@
 				<li><a href="/about/">About Us</a></li>
 				<li class="active"><a href="/news/">News</a></li>
 				<li><a href="/contact/">Contact</a></li>
+				<li><a href="/destinations/">Destinations</a></li>
+				<li><a href="/gallery/">Gallery</a></li>
+				<li><a href="/booking/" class="booking_cta"><b>Book Now</b></a></li>
 
 				{% if user.is_authenticated %}
 					<li><a href="/logout/">Logout</a></li>

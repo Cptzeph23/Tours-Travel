@@ -1309,6 +1309,41 @@ section
 	outline: none;
 	cursor: pointer;
 }
+
+.booking_cta {
+	align-items: center;
+	background-color: #08a9ff !important;
+	border: 2px solid #08a9ff;
+	border-radius: 4px;
+	box-shadow: 0 4px 12px rgba(8, 169, 255, .35);
+	color: #28ff3f !important;
+	display: inline-flex !important;
+	font-size: 15px !important;
+	font-weight: 800 !important;
+	justify-content: center;
+	line-height: 1.2;
+	min-height: 46px;
+	min-width: 116px;
+	padding: 12px 20px !important;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.booking_cta:hover,
+.booking_cta:focus {
+	background-color: #32c0ff !important;
+	border-color: #32c0ff;
+	color: #28ff3f !important;
+	transform: translateY(-1px);
+}
+
+@media (max-width: 991px) {
+	.menu_content .booking_cta {
+		margin: 12px 15px;
+		min-width: 0;
+		width: calc(100% - 30px);
+	}
+}
 .footer_contact_row
 {
 	margin-top: 80px;
