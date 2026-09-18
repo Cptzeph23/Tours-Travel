@@ -33,6 +33,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles/about.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css' %}">
 
+<link rel="stylesheet" type="text/css" href="{% static 'styles/booking.css' %}">
+
         <!--Favicon-->
   <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
   {% include "partials/seo.html" %}
@@ -64,11 +66,7 @@
 							{% if user.is_authenticated %}
 								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
 							{% else %}
-								<div class="header_phone ml-auto">
-
-										<i class="fa fa-instagram" aria-hidden="false"></i>
-									</a>
-								</div>
+								
 							{% endif %}
 
 							<!-- Hamburger -->

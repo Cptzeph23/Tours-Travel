@@ -36,6 +36,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
 
+    <!-- Link the booking.css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/booking.css' %}">
+
     <!--Favicon-->
     <link href="{% static 'images/favicon2.png' %}" rel="icon" class="rounded-circle">
     {% include "partials/seo.html" %}
@@ -59,7 +62,7 @@
 
         .booking_actions .whatsapp_action {
             background-color: #032042;
-            color: #fff;
+            color: #4aff03;
         }
 
         * {
@@ -337,9 +340,7 @@
                             {% if user.is_authenticated %}
                                 <div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
                             {% else %}
-                                <div class="header_phone ml-auto">
-                                    <i class="fa fa-instagram" aria-hidden="false"></i>
-                                </div>
+                                
                             {% endif %}
 
                             <!-- Hamburger -->
@@ -535,7 +536,7 @@
         <h2 class="text-success">Ready to plan your visit?</h2>
         <p>Choose the option that works best for you.</p>
         <div class="booking_actions">
-            <a href="{% url 'booking' %}" style="background-color: #032042;" class="newsletter_button btn-warning"><b>Book Now</b></a>
+            <a href="{% url 'booking' %}" style="background-color: #032042;" class="newsletter_button btn-warning text-success"><b>Book Now</b></a><h5 class="text-info">OR</h5>
             <a href="https://wa.me/254769634078" target="_blank" rel="noopener" class="newsletter_button whatsapp_action"><i class="fa fa-whatsapp text-success mr-2" aria-hidden="true"></i><b>Book on WhatsApp</b></a>
         </div>
     </section>

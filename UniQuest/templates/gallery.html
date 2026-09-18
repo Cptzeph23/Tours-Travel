@@ -80,17 +80,13 @@
 										<li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
 										<li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
 									    <li  class="active"><a href="/gallery/" class="text-warning"><b>Gallery</b></a></li>
-                                        <li><a href="/booking/" class="booking_cta"><b>Book Now</b></a></li>
+                                        <li><a href="{% url 'booking' %}" class="booking_cta"><b>Book Now</b></a></li>
                                     </ul>
 								</nav>
 							{% if user.is_authenticated %}
 								<div class="header_phone ml-auto text-primary" >Welcome, {{user.first_name}}</div>
 							{% else %}
-								<div class="header_phone ml-auto">
-
-										<i class="fa fa-instagram" aria-hidden="false"></i>
-									</a>
-								</div>
+								
 							{% endif %}
 
 							<!-- Hamburger -->
