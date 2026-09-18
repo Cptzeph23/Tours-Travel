@@ -322,7 +322,7 @@ section
 }
 .header.scrolled
 {
-	background: rgba(24,24,24,0.6);
+	background: rgba(0, 0, 0, 0.6);
 }
 .header.scrolled .header_content
 {
