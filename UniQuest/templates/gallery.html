@@ -80,7 +80,7 @@
 										<li><a href="/contact/" class="text-warning"><b>Contact Us</b></a></li>
 										<li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
 									    <li  class="active"><a href="/gallery/" class="text-warning"><b>Gallery</b></a></li>
-                                        <li><a href="{% url 'booking' %}" class="booking_cta"><b>Book Now</b></a></li>
+                                        <li><a href="{% url 'booking' %}" class="booking_cta" style="background-color: #4f5001; color: #28ff3f; display: inline-flex; flex: 0 0 auto; font-weight: 800; justify-content: center; border-radius: 15px; line-height: 1.2; min-width: 128px; padding: 12px 20px; text-align: center; white-space: nowrap;"><b>Book Now</b></a></li>
                                     </ul>
 								</nav>
 							{% if user.is_authenticated %}
@@ -125,7 +125,7 @@
 				<li><a href="/contact/" class="text-warning">Contact</a></li>
                 <li><a href="/destinations/" class="text-warning"><b>Destinations</b></a></li>
                 <li><a href="/gallery/" class="text-warning"><b>Gallery</b></a></li>
-                <li><a href="/booking/" class="booking_cta"><b>Book Now</b></a></li>
+                <li><a href="{% url 'booking' %}" class="booking_cta" style="background-color: #4f5001; color: #28ff3f; display: inline-flex; flex: 0 0 auto; font-weight: 800; justify-content: center; border-radius: 15px; line-height: 1.2; min-width: 128px; padding: 12px 20px; text-align: center; white-space: nowrap;"><b>Book Now</b></a></li>
 
 
 				{% if user.is_authenticated %}
